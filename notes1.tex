@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{microtype}
+\usepackage{amsmath}
 
 \newcommand{\diff}[1]{\frac{#1}{dt}}
 
@@ -22,18 +23,34 @@
 	displacement of the red dot would be the difference in position of point 2 and point 1.
 	Mathematically, we can represent this as $\Delta{x}$.
 	\[\Delta{x} = x_2-x_1\]
+	Since position is a function, $x_2$ and $x_1$ can be written as $x(t_2)$ and $x(t_1)$, where $t_2$ is the time at which
+	the object was at position 2 and $t-1$ is the time at which the object was at position 1. Thus, we can write 
+	displacement as:
+	\[\Delta{x} = \mathrm{x(t_2)}-\mathrm{x(t_1)}\]  
 	\subsection{Distance}
 	\textbf{Distance} is the length of the path traveled by an object from one point to another.
 	\subsection{Speed}
 	\textbf{Speed} is how fast an object moved from one point to another. As an extension, \textbf{velocity} is just speed, but in specific direction. In other words,
 	speed is a \emph{scalar}, velocity is a \emph{vector}, but both represent how fast an object moves. The rate at which velocity change over time is known as \textbf{acceleration}.
-	We can represent velocity as a function $\mathrm{v(t)}$:
+	We can represent velocity as a function $\mathrm{v(t)}$. We could try to define this function as the ratio between displacement and time elapsed between two points:
+	\[\overline{\mathrm{v(t)}} = \frac{\Delta{x}}{\Delta{t}}\]
+	The issue with this equation is that velocity can change at any given time, thus in order to get closer to a true representation
+	of velocity, we need to look at instantaneous intervals of velocity. In other words: we differentiate position.
 	\[\mathrm{v(t)} = \diff{dx}\]
+	By differentiating position, we will get the rate at which position changes at a specific time $t$, which is the velocity at that specific time.
 	\subsection{Acceleration}
 	\textbf{Acceleration} is the rate at which the velocity of an object changes, however with a few exceptions,
-	we will assume acceleration to be constant for the majority of this course. Nonetheless, we can represent
-	acceleration as a function $\mathrm{a(t)}$:
-	\[\mathrm{a(t)} = \diff{dv}\]	
+	we will assume acceleration to be constant for the majority of this course. Thus, we will represent
+	acceleration as a variable $a$, and if acceleration is not constant, a function $\mathrm{a(t)}$.
+
+	Since acceleration is the rate at velocity changes, we can differentiate velocity to get acceleration:
+	\[\mathrm{a} = \diff{dv}\]
+	This also means that if we want to get velocity, but only have acceleration, we can integrate acceleration to get
+	velocity:
+	\[\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} = \int_{t_2}^{t_1}a\,dt\]
+	\[\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} = a\cdot t\biggr\rvert_{t_1}^{t_2}\]
+	\[\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} = a\cdot t_2 - a \cdot t_1 = a\cdot (t_2-t_1)\]
+	\[\mathrm{v(t_2)-v(t_1)} = a\cdot(t_2 - t_1)\]
 	\section{Time}
 	Objects always move with respect to time, as the definition of physics would imply. Thus, we treat time as an independant variable; while position, displacement,
 	distance, speed, velocity, and acceleration are all functions of time.
