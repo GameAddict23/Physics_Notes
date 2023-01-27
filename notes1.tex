@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage{microtype}
+
+\newcommand{\diff}[1]{\frac{#1}{dt}}
+
+\author{Laith}
+\title{Introduction to Physics}
+\date{1/25/2023}
+
+\begin{document}
+	\maketitle
+	\section{What is Physics?}
+	Physics is the study of how the objects around us change over time. 
+	This includes their \textbf{position}, \textbf{displacement}, \textbf{distance}, and \textbf{speed}.
+	\subsection{Position}
+	The \textbf{position} of an object is its relative distance from a reference point. For example, if we had a red dot and a green dot on a line, then we could
+	determine the position of the red dot to be its distance from the green dot and the position of the green dot to be its distance from the red dot.
+	We can express position as a function $\mathrm{x(t)}$.
+	\subsection{Displacement}
+	\textbf{Displacement} is the difference between an objects new position and its previous position. If we had a red dot move from point 1 to point 2, then the
+	displacement of the red dot would be the difference in position of point 2 and point 1.
+	Mathematically, we can represent this as $\Delta{x}$.
+	\[\Delta{x} = x_2-x_1\]
+	\subsection{Distance}
+	\textbf{Distance} is the length of the path traveled by an object from one point to another.
+	\subsection{Speed}
+	\textbf{Speed} is how fast an object moved from one point to another. As an extension, \textbf{velocity} is just speed, but in specific direction. In other words,
+	speed is a \emph{scalar}, velocity is a \emph{vector}, but both represent how fast an object moves. The rate at which velocity change over time is known as \textbf{acceleration}.
+	We can represent velocity as a function $\mathrm{v(t)}$:
+	\[\mathrm{v(t)} = \diff{dx}\]
+	\subsection{Acceleration}
+	\textbf{Acceleration} is the rate at which the velocity of an object changes, however with a few exceptions,
+	we will assume acceleration to be constant for the majority of this course. Nonetheless, we can represent
+	acceleration as a function $\mathrm{a(t)}$:
+	\[\mathrm{a(t)} = \diff{dv}\]	
+	\section{Time}
+	Objects always move with respect to time, as the definition of physics would imply. Thus, we treat time as an independant variable; while position, displacement,
+	distance, speed, velocity, and acceleration are all functions of time.
+	\section{Formulas}
+	\[\mathrm{v(t)} = \diff{dx}\]
+	\[\mathrm{a(t)} = \diff{dv}\]
+\end{document}
