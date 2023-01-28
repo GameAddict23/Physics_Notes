@@ -47,14 +47,30 @@
 	\[\mathrm{a} = \diff{dv}\]
 	This also means that if we want to get velocity, but only have acceleration, we can integrate acceleration to get
 	velocity:
-	\[\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} = \int_{t_2}^{t_1}a\,dt\]
-	\[\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} = a\cdot t\biggr\rvert_{t_1}^{t_2}\]
-	\[\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} = a\cdot t_2 - a \cdot t_1 = a\cdot (t_2-t_1)\]
-	\[\mathrm{v(t_2)-v(t_1)} = a\cdot(t_2 - t_1)\]
+	\begin{align*}
+	\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} & = \int_{t_2}^{t_1}a\,dt\\
+	\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} & = a\cdot t\biggr\rvert_{t_1}^{t_2}\\
+	\mathrm{v(t)\biggr\rvert_{t_1}^{t_2}} & = a\cdot t_2 - a \cdot t_1 = a\cdot (t_2-t_1)\\
+	\mathrm{v(t_2)-v(t_1)} & = a\cdot(t_2 - t_1)
+	\end{align*}
 	\section{Time}
 	Objects always move with respect to time, as the definition of physics would imply. Thus, we treat time as an independant variable; while position, displacement,
 	distance, speed, velocity, and acceleration are all functions of time.
-	\section{Formulas}
-	\[\mathrm{v(t)} = \diff{dx}\]
-	\[\mathrm{a(t)} = \diff{dv}\]
+	\section{Problems}
+	\subsection{The Rabbit}
+	A rabbit is moving along a straigh line. At time $t_1=0$ the raddit is distance $x_1=1\mathrm{m}$ from your right
+	and is moving towards the right with a velocity of $v_1=1\mathrm{\frac{m}{s}}$. The rabbit has a constant acceleration
+	of $a=1\mathrm{\frac{m}{s^2}}$ towards the right. What is the position of the rabbit as time $t_2=10s$?
+	\subsubsection{Solution}
+	First we list our known variables followed by our unknowns:
+	\begin{align*}
+	\mathrm{\underline{Knowns}}\\
+	x_1 &=1\mathrm{m} & t_1 &=0\mathrm{s}\\
+	v_1 &=1\mathrm{\frac{m}{s}} & t_2 &= 10\mathrm{s}\\
+	a &=1\mathrm{\frac{m}{s^2}}&\\
+	\mathrm{\underline{Unknowns}}\\
+	x_2 &= ?\\
+	v_2 &= ?
+	\end{align*}
+	Then we illustrate the scenario:
 \end{document}
