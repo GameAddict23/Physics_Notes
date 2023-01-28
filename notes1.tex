@@ -2,6 +2,7 @@
 
 \usepackage{microtype}
 \usepackage{amsmath}
+\usepackage{tikz}
 
 \newcommand{\diff}[1]{\frac{#1}{dt}}
 
@@ -73,4 +74,69 @@
 	v_2 &= ?
 	\end{align*}
 	Then we illustrate the scenario:
+	\begin{figure}[hh]
+	\begin{center}
+	\begin{tikzpicture}
+		\node[above] at (3, 0.4) (t1) {$t_1$};
+		\node[above] at (1, 0.4) (t2) {$t_2$};
+		\node[circle, draw, scale=0.8] at (3, 0) (r) {$R_{x_1}$};
+		\node[circle, draw, scale=0.8] at (1, 0) (r2) {$R_{x_2}$};
+		\node[circle, draw, scale=0.8] at (5, 0) (y) {You};
+
+		\draw[<-] (0, 0) -- (r2);
+		\draw (r2) -- (r);
+		\draw (r) -- (y);
+		\draw[->] (y) -- (8, 0);
+
+		\node[above] at (2, -0.8) (x) {$\Delta{x}$};
+
+		\draw[<-] (1, -0.8) -- (3, -0.8);
+	\end{tikzpicture}
+	\end{center}
+    \end{figure}
+	% \newpage
+	While we do know velocity at time $t=0\mathrm{s}$, we do not know velocity at time $t=10\mathrm{s}$.
+	We don't need to know the value of velocity at this point, it will give us the grounds to define an expression
+	for $\mathrm{v(t)}$, which we can differentiate to get a function for position, allowing us to calculate the final
+	position of the rabbit.
+
+	Since we know acceleration $a=1\mathrm{\frac{m}{s^2}}$, including the fact that it is constant, we can
+	differentiate acceleration to find a function for velocity:
+	\begin{align}
+		a &= \diff{dv}\\
+		\int_{t_2}^{t_1}a\,dt &= \int_{t_2}^{t_1}\diff{dv}\\
+		a\cdot t\biggr\rvert_{t_1}^{t_2} &= \mathrm{v}(t) \biggr\rvert_{t_1}^{t_2}\\
+		&\Rightarrow \mathrm{v}(t_2)-\mathrm{v}(t_1) = a\cdot(t_2 - t_1)\\
+		&\Rightarrow \mathrm{v}(t_2) = a\cdot (t_2-t_1) + \mathrm{v}(t_1)
+	\end{align}
+	Now that we have a function for velocity, we can utilize the fact that velocity
+	is the derivative of position, allowing us to set our function equal to $dx$:
+	\[\diff{dx} = \mathrm{v}(t_2) = a\cdot(t_2-t_1)+\mathrm{v}(t_1)\]
+	We can now omit $\mathrm{v}(t_2)$ since we aren't looking for it, giving us a clean equation that we
+	can integrate to get the value of $x_2$. Naturally, we want to integrate with the upper limit 
+	$t_2$ and the lower limit $t_1$:
+	\begin{align}
+		\int_{t_1}^{t_2} \diff{dx}\,dt &= \int_{t_1}^{t_2} [a\cdot (t_2-t_1) + v_1] \,dt\\
+		\int_{t_1}^{t_2}\diff{dx}\,dt &= \int_{t_1}^{t_2} a\cdot(t_2-t_1)\,dt + \int_{t_1}^{t_2} v_1\,dt\\
+		\mathrm{x}(t)\biggr\rvert_{t_1}^{t_2} &= \int_{t_1}^{t_2}(a\cdot \Delta{t}) \,dt + (v_1\cdot t) \biggr\rvert_{t_1}^{t_2}\\
+		\mathrm{x}(t)\biggr\rvert_{t_1}^{t_2} &= a\frac{\Delta{t}^2}{2} \biggr\rvert_{t_1}^{t_2} + (v_1\cdot t) \biggr\rvert_{t_1}^{t_2}
+	\end{align}
+	Note: $\Delta{t} = t - t_1$ where $t$ is a parameter.
+	\begin{align}
+		\mathrm{x}(t_2)-\mathrm{x}(t_1) &= a(\frac{\Delta{t}^2(t_2)}{2} - \frac{\Delta{t}^2(t_1)}{2}) + v_1\cdot (t_2-t_1)\\
+		\mathrm{x}(t_2)-\mathrm{x}(t_1) &= a(\frac{(t_2-t_1)^2}{2} - \frac{(t_1-t_1)^2}{2}) + v_1\cdot (t_2-t_1)\\
+		\mathrm{x}(t_2) &= a(\frac{(t_2-t_1)^2}{2} - \frac{(t_1-t_1)^2}{2}) + v_1\cdot (t_2-t_1) + \mathrm{x}(t_1)\\
+		x_2 &= a(\frac{(t_2-t_1)^2}{2} - \frac{(t_1-t_1)^2}{2}) + v_1\cdot (t_2-t_1) + x_1\\
+	\end{align}
+	We now have an equation for $x_2$. Now all we need to do now is plug in our knowns.
+	\begin{align}
+		x_2 &= (1)(\frac{(10-0)^2}{2} - \frac{(0-0)^2}{2}) + (1)\cdot (10-0) + (1)\\
+		x_2 &= 1(\frac{(10)^2}{2} - \frac{(0)^2}{2}) + 1\cdot 10 + 1\\
+		x_2 &= 1(\frac{100}{2} - \frac{0}{2}) + 10 + 1\\
+		x_2 &= 1(50 - 0) + 11\\
+		x_2 &= 50 + 11\\
+		x_2 &= 61\\
+	\end{align}
+	Our answer: $61\mathrm{m}$. The final position of the rabbit (the position of the rabit at
+	time $t_2=10\mathrm{s}$) is $61$ meters from our right.
 \end{document}
