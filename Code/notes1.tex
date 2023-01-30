@@ -3,8 +3,24 @@
 \usepackage{microtype}
 \usepackage{amsmath}
 \usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.18}
 
 \newcommand{\diff}[1]{\frac{#1}{dt}}
+\newcommand{\vel}{\mathrm{v}}
+\newcommand{\x}{\mathrm{x}}
+\newcommand{\inter}{\int_{t_1}^{t_2}}
+\newcommand{\tvert}{\biggr\rvert_{t_1}^{t_2}}
+
+\patchcmd\subequations
+ {\theparentequation\alph{equation}}
+ {\subequationsformat}
+ {}{}
+
+\newcommand{\subequationsformat}{\theparentequation.\arabic{equation}}
 
 \author{Laith}
 \title{Introduction to Physics}
@@ -65,13 +81,15 @@
 	\subsubsection{Solution}
 	First we list our known variables followed by our unknowns:
 	\begin{align*}
-	\mathrm{\underline{Knowns}}\\
-	x_1 &=1\mathrm{m} & t_1 &=0\mathrm{s}\\
-	v_1 &=1\mathrm{\frac{m}{s}} & t_2 &= 10\mathrm{s}\\
-	a &=1\mathrm{\frac{m}{s^2}}&\\
-	\mathrm{\underline{Unknowns}}\\
-	x_2 &= ?\\
-	v_2 &= ?
+	&\mathrm{\underline{Knowns}}\\
+	&x_1 =1\mathrm{m} \\
+	&t_1 =0\mathrm{s}\\
+	&v_1 =1\mathrm{\frac{m}{s}} \\
+	&t_2 = 10\mathrm{s}\\
+	&a =1\mathrm{\frac{m}{s^2}}\\
+	&\mathrm{\underline{Unknowns}}\\
+	&x_2 = ?\\
+	&v_2 = ?
 	\end{align*}
 	Then we illustrate the scenario:
 	\begin{figure}[hh]
@@ -102,6 +120,7 @@
 
 	Since we know acceleration $a=1\mathrm{\frac{m}{s^2}}$, including the fact that it is constant, we can
 	differentiate acceleration to find a function for velocity:
+	\begin{subequations}
 	\begin{align}
 		a &= \diff{dv}\\
 		\int_{t_2}^{t_1}a\,dt &= \int_{t_2}^{t_1}\diff{dv}\\
@@ -137,6 +156,106 @@
 		x_2 &= 50 + 11\\
 		x_2 &= 61\\
 	\end{align}
+	\end{subequations}
 	Our answer: $61\mathrm{m}$. The final position of the rabbit (the position of the rabit at
 	time $t_2=10\mathrm{s}$) is $61$ meters from our right.
+	\subsection{The Police Car and the Speeding Car}
+	A car is moving with a constant speed $v$. It passes a police car on the side of the road.
+	The officer realized that the speed of the car was over the limit and starts to chase it at
+	time $t_1=10\,\mathrm{s}$ after the car passed by. The police car moves with a constant acceleration 
+	of $a=10\,\mathrm{m/s^2}$ and reaches the car at $t_2=30\,\mathrm{s}$. What is the velocity of the
+	speeding car?
+	\subsubsection{Solution}
+	Lets draw the scenario:
+	\begin{figure}[hh]
+	\begin{center}
+	\begin{tikzpicture}
+		\draw[] (-1, 0) -- (5, 0);
+
+		\node[above, scale=1, color=blue] at (4, 0) (p) {$P_{x_1}$};
+		\node[above, scale=1, color=red] at (1.5, 0) (c) {$C_{x_1}$};
+		\node[above, scale=1, color=green] at (0, 0) (x) {$C_{x_2}\,P_{x_2}$};
+
+		\node[scale=3, color=blue] at (4, 0) (p1) {.};
+		\node[scale=3, color=red] at (1.5, 0) (p2) {.};
+		\node[scale=3, color=green] at (0, 0) (p3) {.};
+		
+		\node[below, scale=0.8] at (4, 0) (p) {$t_1=10\,\mathrm{s}$};
+		\node[below, scale=0.8] at (1.5, 0) (c) {$t_1=10\,\mathrm{s}$};
+		\node[below, scale=0.8] at (1.5, -0.4) (x) {${x_1}_{car}=?\,\mathrm{m}$};
+		\node[below, scale=0.8] at (0, 0) (x) {$t_2=30\,\mathrm{s}$};
+		\node[below, scale=0.8] at (4, -0.4) (x) {${x_1}_{police}=0\,\mathrm{m}$};
+	\end{tikzpicture}
+	\end{center}
+    \end{figure}
+
+	Lets list our known and unknown variables:
+	\begin{align*}
+		&\mathrm{\underline{Knowns}}\\
+		&t_1 =10\,\mathrm{s} \\
+		&t_2 = 30\,\mathrm{s} \\
+		&{v_1}_{police} =0\,\mathrm{m/s} \\
+		&a_{police} =10\,\mathrm{m/s^2}\\
+		&{x_1}_{police} = 0\,\mathrm{m}\\
+		&a_{car} =0\,\mathrm{m/s^2}\\
+		&\mathrm{\underline{Unknowns}}\\
+		&{x_1}_{car} = ?\\
+		&x_2 = ?\\
+		&{v_2}_{police} = ?\\
+		&{v}_{car} = ?
+	\end{align*}
+	We will make the initial position of the police car our reference position, thus it will
+	be equal to $0\,\mathrm{m}$. Since the speeding car has a constant speed, its acceleration
+	equals $0\,\mathrm{m/s^2}$ because the speed is not changing.
+
+	Since the police car and the speeding car reached the same position at $t=\,\mathrm{s}$,
+	by finding the equations of position for both cars, we can then solve for the velocity of
+	the speeding car.
+
+	Since the police car started to move at $t_1=10\,\mathrm{s}$ and reached the position of the
+	speeding car at $t_2=30\,\mathrm{s}$, we can say that the police car took $20\,\mathrm{s}$
+	($t_2-t_1=20\,\mathrm{s}$) to reach the car. We can also say that the velocity of the police car
+	at $t_1=10\,\mathrm{s}$ was $0\,\mathrm{m/s}$ since it only began to move at that instant. With an
+	acceleration of $10\,\mathrm{m/s^2}$, we can integrate acceleration to get a function for velocity: 
+	\begin{subequations}
+	\begin{align}
+		&\vel_{police}(t) = \int a \,dt\\
+		&\vel_{police}(t) = a\cdot t\\
+		% &\vel_{police}(t) \tvert = \inter a \,dt\\
+		% &\vel_{police}(t_2)-\vel_{police}(t_1) = a\cdot t \tvert\\
+		% \Rightarrow &\vel_{police}(t_2) = a\cdot t \tvert + \vel_{police}(t_1)\\
+		% &\vel_{police}(t_2) = [10\cdot t_2 - 10\cdot t_1] + 0\\
+		% &\vel_{police}(t_2) = 10\cdot(t_2 - t_1)
+	\end{align}
+	Then we can integrate again to get position:
+	\begin{align}
+		&\x_{police}(t) = \int \vel_{police}(t) \,dt \\
+		&\x_{police}(t) = \int a \cdot t \,dt \\
+		&\x_{police}(t) = a \cdot \frac{t^2}{2}\\
+		&\x_{police}(t) = 10 \cdot \frac{t^2}{2}
+	\end{align}
+	Now for the speeding car, while we do not know its velocity, we can still integrate its acceleration of 
+	$0 \,\mathrm{m/s^2}$ to get a function for velocity:
+	\begin{align}
+		&\vel_{car}(t) = \int 0 \,dt \\
+		&\vel_{car}(t) = C \\
+	\end{align}
+	Then for position:
+	\begin{align}
+		&\x_{car}(t) = \int \vel_{car}(t) \,dt\\
+		&\x_{car}(t) = \int C \,dt \\
+		&\x_{car}(t) = C \cdot t
+	\end{align}
+	Now we set these two equations equal to each other, in which we know $t$ to be $30\,\mathrm{s}$:
+	\begin{align}
+		&\x_{car}(t) = x_{police}(t) \\
+		&\x_{car}(30) = x_{police}(30) \\
+		&C\cdot 30 = 10\cdot \frac{30^2}{2}\\
+		&C\cdot 30 = 5\cdot 30^2\\
+		\Rightarrow &C = \frac{5\cdot 30^2}{30}\\
+		&C = 5\cdot 30\\
+		&C = 150 \,\mathrm{m/s}\\
+	\end{align}
+	We find the velocity of the speeding car to be $150 \,\mathrm{m/s}$.
+\end{subequations}
 \end{document}
