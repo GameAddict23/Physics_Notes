@@ -2,18 +2,20 @@
 
 \usepackage{microtype}
 \usepackage{amsmath}
-\usepackage{tikz}
 \usepackage{enumitem}
 \usepackage{etoolbox}
-\usepackage{pgfplots}
+% \usepackage{pgfplots}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
 
-\pgfplotsset{compat=1.18}
+% \pgfplotsset{compat=1.18}
 
 \newcommand{\diff}[1]{\frac{#1}{dt}}
 \newcommand{\vel}{\mathrm{v}}
 \newcommand{\x}{\mathrm{x}}
 \newcommand{\inter}{\int_{t_1}^{t_2}}
 \newcommand{\tvert}{\biggr\rvert_{t_1}^{t_2}}
+\newcommand{\derv}{\frac{\mathrm{d}}{\mathrm{d}t}}
 
 \patchcmd\subequations
  {\theparentequation\alph{equation}}
@@ -172,19 +174,19 @@
 	\begin{tikzpicture}
 		\draw[] (-1, 0) -- (5, 0);
 
-		\node[above, scale=1, color=blue] at (4, 0) (p) {$P_{x_1}$};
-		\node[above, scale=1, color=red] at (1.5, 0) (c) {$C_{x_1}$};
-		\node[above, scale=1, color=green] at (0, 0) (x) {$C_{x_2}\,P_{x_2}$};
+		\node[above, scale=1, color=blue] at (0, 0) (p) {$P_{x_1}$};
+		\node[above, scale=1, color=red] at (2, 0) (c) {$C_{x_1}$};
+		\node[above, scale=1, color=ForestGreen] at (4, 0) (x) {$C_{x_2}\,P_{x_2}$};
 
-		\node[scale=3, color=blue] at (4, 0) (p1) {.};
-		\node[scale=3, color=red] at (1.5, 0) (p2) {.};
-		\node[scale=3, color=green] at (0, 0) (p3) {.};
+		\node[scale=3, color=blue] at (0, 0) (p1) {.};
+		\node[scale=3, color=red] at (2, 0) (p2) {.};
+		\node[scale=3, color=ForestGreen] at (4, 0) (p3) {.};
 		
-		\node[below, scale=0.8] at (4, 0) (p) {$t_1=10\,\mathrm{s}$};
-		\node[below, scale=0.8] at (1.5, 0) (c) {$t_1=10\,\mathrm{s}$};
-		\node[below, scale=0.8] at (1.5, -0.4) (x) {${x_1}_{car}=?\,\mathrm{m}$};
-		\node[below, scale=0.8] at (0, 0) (x) {$t_2=30\,\mathrm{s}$};
-		\node[below, scale=0.8] at (4, -0.4) (x) {${x_1}_{police}=0\,\mathrm{m}$};
+		\node[below, scale=0.8] at (0, 0) (p) {$t_1=10\,\mathrm{s}$};
+		\node[below, scale=0.8] at (2, 0) (c) {$t_1=10\,\mathrm{s}$};
+		\node[below, scale=0.8] at (2, -0.4) (x) {${x_1}_{car}=?\,\mathrm{m}$};
+		\node[below, scale=0.8] at (4, 0) (x) {$t_2=30\,\mathrm{s}$};
+		\node[below, scale=0.8] at (0, -0.4) (x) {${x_1}_{police}=0\,\mathrm{m}$};
 	\end{tikzpicture}
 	\end{center}
     \end{figure}
@@ -206,56 +208,86 @@
 	\end{align*}
 	We will make the initial position of the police car our reference position, thus it will
 	be equal to $0\,\mathrm{m}$. Since the speeding car has a constant speed, its acceleration
-	equals $0\,\mathrm{m/s^2}$ because the speed is not changing.
+	equals $0\,\mathrm{m/s^2}$ because the speed is not changing. 
 
-	Since the police car and the speeding car reached the same position at $t=\,\mathrm{s}$,
-	by finding the equations of position for both cars, we can then solve for the velocity of
-	the speeding car.
+	We can prove this mathematically via the fact that taking the derivative of a constant will 
+	return $0$, and since acceleration is the derivative of velocity, our acceleration would be $0$.
 
-	Since the police car started to move at $t_1=10\,\mathrm{s}$ and reached the position of the
-	speeding car at $t_2=30\,\mathrm{s}$, we can say that the police car took $20\,\mathrm{s}$
-	($t_2-t_1=20\,\mathrm{s}$) to reach the car. We can also say that the velocity of the police car
-	at $t_1=10\,\mathrm{s}$ was $0\,\mathrm{m/s}$ since it only began to move at that instant. With an
-	acceleration of $10\,\mathrm{m/s^2}$, we can integrate acceleration to get a function for velocity: 
+	In order to find the velocity of the speeding car, we need to consider the fact that the police car 
+	eventually reaches the speeding car, in which the police car started at a velocity of $0\,\mathrm{m/s}$
+	at time $t_1=10\,\mathrm{s}$ and reaches the speeding car at an unknown velocity at time $t_2=30\,\mathrm{s}$.
+	In order to reach the speeding car, the police car would have to reach a speed higher than the speeding car, thus
+	at some time $t$, $\vel_{police}(t) = \vel_{car}(t)$, and since the velocity of the speeding car is constant,
+	$\vel_{police}(t) = v_{car}$. In order to find the velocity of the speeding car, we need to find the time at which 
+	the two velocities were equal. 
 	\begin{subequations}
 	\begin{align}
-		&\vel_{police}(t) = \int a \,dt\\
-		&\vel_{police}(t) = a\cdot t\\
-		% &\vel_{police}(t) \tvert = \inter a \,dt\\
-		% &\vel_{police}(t_2)-\vel_{police}(t_1) = a\cdot t \tvert\\
-		% \Rightarrow &\vel_{police}(t_2) = a\cdot t \tvert + \vel_{police}(t_1)\\
-		% &\vel_{police}(t_2) = [10\cdot t_2 - 10\cdot t_1] + 0\\
-		% &\vel_{police}(t_2) = 10\cdot(t_2 - t_1)
+		\vel_{police}(t) &= v_{car}
 	\end{align}
-	Then we can integrate again to get position:
+	We can integrate the acceleration of the police car to get $\vel(t)$. 
 	\begin{align}
-		&\x_{police}(t) = \int \vel_{police}(t) \,dt \\
-		&\x_{police}(t) = \int a \cdot t \,dt \\
-		&\x_{police}(t) = a \cdot \frac{t^2}{2}\\
-		&\x_{police}(t) = 10 \cdot \frac{t^2}{2}
+		\vel_{police}(t) &= \int a_{police} \,dt \\
+		\vel_{police}(t) &= \int 10 \,dt \\
+		\vel_{police}(t) &= 10t + C
 	\end{align}
-	Now for the speeding car, while we do not know its velocity, we can still integrate its acceleration of 
-	$0 \,\mathrm{m/s^2}$ to get a function for velocity:
+	In order to get rid of the unknown constant $C$, we can set our limits to be $b=t$ where $t$ is the time 
+	we are looking for and $a=t_1$ where $t_1=10\,\mathrm{s}$. 
 	\begin{align}
-		&\vel_{car}(t) = \int 0 \,dt \\
-		&\vel_{car}(t) = C \\
+		\vel_{police}(t) \biggr\rvert_{t_1}^{t} &= 10t + C \biggr\rvert_{t_1}^{t} \\
+		\vel_{police}(t) \biggr\rvert_{10}^{t} &= 10t + C \biggr\rvert_{10}^{t} \\
+		\vel_{police}(t) - \vel_{police}(10) &= [10(t) + C] - [10(10) + C] \\
+		\vel_{police}(t) - \vel_{police}(10) &= 10(t) - 10(10) \\
+		\vel_{police}(t) - \vel_{police}(10) &= 10t - 100
 	\end{align}
-	Then for position:
+	Since we know that the police car only starts to move at time $t_1=10\,\mathrm{s}$, we know that
+	$\vel_{police}(10) = 0$.
 	\begin{align}
-		&\x_{car}(t) = \int \vel_{car}(t) \,dt\\
-		&\x_{car}(t) = \int C \,dt \\
-		&\x_{car}(t) = C \cdot t
+		\vel_{police}(t) - (0) &= 10t - 100 \\
+		\vel_{police}(t) &= 10t - 100
 	\end{align}
-	Now we set these two equations equal to each other, in which we know $t$ to be $30\,\mathrm{s}$:
+	What this gives us is a function that tells the velocity of the police car for time $t \geq 10$.
+
+	Now, $v_{police}(t) = v_{car}$ if $30 > t > 10$. Since both cars reach the same position at time $t_2=30\,\mathrm{s}$,
+	we can integrate velocity with limits $b=t$ and $a=t_1=10\,\mathrm{s}$ to get position, and then calculate the position at
+	time $t=30\,\mathrm{s}$. 
 	\begin{align}
-		&\x_{car}(t) = x_{police}(t) \\
-		&\x_{car}(30) = x_{police}(30) \\
-		&C\cdot 30 = 10\cdot \frac{30^2}{2}\\
-		&C\cdot 30 = 5\cdot 30^2\\
-		\Rightarrow &C = \frac{5\cdot 30^2}{30}\\
-		&C = 5\cdot 30\\
-		&C = 150 \,\mathrm{m/s}\\
+		\x_{police}(t) \biggr\rvert_{t_1}^{t} &= \int_{t_1}^{t} \vel_{police}(t) \,dt \\
+		\x_{police}(t) \biggr\rvert_{t_1}^{t} &= \int_{t_1}^{t} 10t - 100 \,dt \\
+		\x_{police}(t) \biggr\rvert_{10}^{t} &= \int_{10}^{t} 10t - 100 \,dt \\
+		\x_{police}(t) - \x_{police}(10) &= [10\frac{t^2}{2} - 100t] \biggr\rvert_{10}^{t} \\
+		\x_{police}(t) - \x_{police}(10) &= [5t^2 - 100t] \biggr\rvert_{10}^{t} \\
+		\x_{police}(t) - \x_{police}(10) &= [5t^2 - 100t] - [5(10)^2 - 100(10)] \\
+		\x_{police}(t) - \x_{police}(10) &= [5t^2 - 100t] - (-500) \\
+		\x_{police}(t) - \x_{police}(10) &= 5t^2 - 100t + 500 \\
 	\end{align}
-	We find the velocity of the speeding car to be $150 \,\mathrm{m/s}$.
-\end{subequations}
+	Since we decided that the initial position of the police car would be our reference point, we know that
+	$\x_{police}(10)=0$.
+	\begin{align}
+		\x_{police}(t) - (0) &= 5t^2 - 100t + 500 \\
+		\x_{police}(t) &= 5t^2 - 100t + 500
+	\end{align}	
+	If $\x_{police}(t) = \x_{car}(t)$ at time $t=30\,\mathrm{s}$, we can integrate the velocity of the speeding car $v_{car}=C$
+	with the limts $b=t$ and $a=t_1=10\,\mathrm{s}$ to get its position function $\x_{car}(t)$. 
+	Then, we can set the position functions of both cars equal to each other, allowing us to solve for $C$.
+	\begin{align}
+		\x_{car}(t)  &= \int_{t_1}^{t} v_{car} \,\mathrm{d}t \\
+		\x_{car}(t)  &= \int_{t_1}^{t} C \,\mathrm{d}t \\
+		\x_{car}(t)  &= C\cdot t \biggr\rvert_{t_1}^{t} \\
+		\x_{car}(t) &= C\cdot t \biggr\rvert_{10}^{t} \\
+		\x_{car}(t)  &= C\cdot t - C\cdot 10 \\
+		\x_{car}(t)  &= C\cdot (t - 10) \\
+	\end{align}
+	Now we set the position function of the speeding car equal to the position function of the police car:
+	\begin{align}
+		\x_{car}(t) \biggr\rvert_{t=30} &= \x_{police}(t) \biggr\rvert_{t=30} \\
+		C\cdot(t-10) \biggr\rvert_{t=30} &= 5t^2-100t+500 \biggr\rvert_{t=30} \\
+		C\cdot((30)-10) &= 5(30)^2-100(30)+500 \\
+		C\cdot(20) &= 5(900)-3000+500 \\
+		20C &= 4500-3000+500 \\
+		20C &= 1500+500 \\
+		20C &= 2000 \\
+		\Rightarrow C &= \frac{2000}{20} \\
+		C &= 100 \,\mathrm{m/s} \\
+	\end{align}
+	\end{subequations}
 \end{document}
