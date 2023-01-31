@@ -9,6 +9,7 @@
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
 \usepackage[letterpaper, bottom=100pt]{geometry}
+\usepackage{physics}
 
 % \pgfplotsset{compat=newest}
 
@@ -33,8 +34,8 @@
 \begin{document}
 \maketitle
 \section{Visualizing a 3D Space}
-Objects can move in 3 ways with respect to a position, and these 3 movements are known as \textbf{vectors}. 
-Vectors include both a direction and a distance.
+Objects can move in 3 ways with respect to a position, and \textbf{vectors} are used to
+represent this. Vectors include both a direction and a distance.
 \begin{figure}[hh]
 \begin{center}
 \begin{tikzpicture}
@@ -50,7 +51,7 @@ Vectors include both a direction and a distance.
 \end{center}
 \end{figure}
 
-The gray lines in the below figure can be considered vectors.
+If we take the gray lines in the figure below:
 \begin{figure}[hh]
 \begin{center}
 \begin{tikzpicture}
@@ -71,6 +72,80 @@ The gray lines in the below figure can be considered vectors.
 \draw[->] (0, 0, 0) -- (1, 0, 4) node (b) {};
 \draw[<->, color=gray] (a) -- (b) node[below] {$\Delta z$};
 \end{tikzpicture}
+
 \end{center}
 \end{figure}
+
+and assign each of them a direction:
+\begin{figure}[hh]
+\begin{center}
+\begin{tikzpicture}
+\draw[->, color=green] (0, 0, 0) -- (3, 0, 0) node[scale=0.6, anchor=west] {X};
+\draw[->, color=blue] (0, 0, 0) -- (0, 3, 0) node[scale=0.6, anchor=south] {Y};
+\draw[->, color=red] (0, 0, 0) -- (0, 0, 3) node[scale=0.6, anchor=north east] {Z};
+
+\draw[->, color=black] (0, 0, 0) -- (4, 1, 0) node (a) {};
+\draw[->, color=black] (0, 0, 0) -- (4, -1, 0) node (b) {};
+\draw[->, color=gray] (a) -- (4, 0, 0);
+\draw[->, color=gray] (4, 0, 0) -- (b) node[right] {$\Delta y$};
+
+\draw[->, color=black] (0, 0, 0) -- (1, 4, 0) node (a) {};
+\draw[->, color=black] (0, 0, 0) -- (-1, 4, 0) node (b) {};
+\draw[->, color=gray] (a) -- (0, 4, 0);
+\draw[->, color=gray] (0, 4, 0) -- (b) node[above] {$\Delta x$};
+
+\draw[->] (0, 0, 0) -- (-1, 0, 4) node (a) {};
+\draw[->] (0, 0, 0) -- (1, 0, 4) node (b) {};
+\draw[->, color=gray] (a) -- (0, 0, 4);
+\draw[->, color=gray] (0, 0, 4) -- (b) node[below] {$\Delta z$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+We now have vectors! 
+\section{Vectors}
+Mathematically, vectors are represented as a variable
+with an arrow on-top of it:
+\[\va{a}\]
+Above, we have a vector named \textbf{a}. This vector has various components:
+\begin{align*}
+    & \textbf{a} = \text{magnitude (distance)} \\
+    & \textbf{a}_x = \text{x distance} \\
+    & \textbf{a}_y = \text{y distance} \\
+    & \textbf{a}_z = \text{z distance}
+\end{align*}
+Lets label our figure from before with vectors:
+\begin{figure}[hh]
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\draw[->, color=green] (0, 0, 0) -- (3, 0, 0) node[scale=0.6, anchor=west] {X};
+\draw[->, color=blue] (0, 0, 0) -- (0, 3, 0) node[scale=0.6, anchor=south] {Y};
+\draw[->, color=red] (0, 0, 0) -- (0, 0, 3) node[scale=0.6, anchor=north east] {Z};
+
+\draw[->, color=black] (0, 0, 0) -- (4, 1, 0) node (a) {};
+\draw[->, color=black] (0, 0, 0) -- (4, -1, 0) node (b) {};
+\draw[->, color=gray] (a) -- (4, 0, 0);
+\draw[->, color=gray] (4, 0, 0) node[color=black, right] {$\Delta y$} -- (b) node[right] {$\va{a}$};
+
+\draw[->, color=black] (0, 0, 0) -- (1, 4, 0) node (a) {};
+\draw[->, color=black] (0, 0, 0) -- (-1, 4, 0) node (b) {};
+\draw[->, color=gray] (a) -- (0, 4, 0);
+\draw[->, color=gray] (0, 4, 0) node[color=black, above] {$\Delta x$} -- (b) node[above] {$\va{b}$};
+
+\draw[->] (0, 0, 0) -- (-1, 0, 4) node (a) {};
+\draw[->] (0, 0, 0) -- (1, 0, 4) node (b) {};
+\draw[->, color=gray] (a) -- (0, 0, 4);
+\draw[->, color=gray] (0, 0, 4) node[color=black, below] {$\Delta z$} -- (b) node[below] {$\va{c}$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+We can say that:
+\begin{align*}
+    \va{a} &= \Delta y \\
+    \va{b} &= \Delta x \\
+    \va{c} &= \Delta z 
+\end{align*}
+These vectors would be known as \textbf{displacement vectors}, which are the simplest type
+of vectors and thus make for a good introductary example.
 \end{document}
