@@ -1,0 +1,76 @@
+\documentclass{article}
+
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+% \usepackage{pgfplots}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage[letterpaper, bottom=100pt]{geometry}
+
+% \pgfplotsset{compat=newest}
+
+\newcommand{\diff}[1]{\frac{#1}{dt}}
+\newcommand{\vel}{\mathrm{v}}
+\newcommand{\x}{\mathrm{x}}
+\newcommand{\inter}{\int_{t_1}^{t_2}}
+\newcommand{\tvert}{\biggr\rvert_{t_1}^{t_2}}
+\newcommand{\derv}{\frac{\mathrm{d}}{\mathrm{d}t}}
+
+\patchcmd\subequations
+ {\theparentequation\alph{equation}}
+ {\subequationsformat}
+ {}{}
+
+\newcommand{\subequationsformat}{\theparentequation.\arabic{equation}}
+
+\author{Laith}
+\title{Vectors and 3-Dimensional Space}
+\date{1/30/2023}
+
+\begin{document}
+\maketitle
+\section{Visualizing a 3D Space}
+Objects can move in 3 ways with respect to a position, and these 3 movements are known as \textbf{vectors}. 
+Vectors include both a direction and a distance.
+\begin{figure}[hh]
+\begin{center}
+\begin{tikzpicture}
+\tdplotsetmaincoords{60}{110};
+\pgfsetxvec{\pgfpoint{0.866cm}{-.5cm}};
+\pgfsetyvec{\pgfpoint{0cm}{1cm}};
+\pgfsetzvec{\pgfpoint{-.866cm}{-.5cm}};
+
+\draw[->, color=green] (0, 0, 0) -- (3, 0, 0) node[anchor=west] {X};
+\draw[->, color=blue] (0, 0, 0) -- (0, 3, 0) node[anchor=south] {Y};
+\draw[->, color=red] (0, 0, 0) -- (0, 0, 3) node[anchor=north east] {Z};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+The gray lines in the below figure can be considered vectors.
+\begin{figure}[hh]
+\begin{center}
+\begin{tikzpicture}
+\draw[->, color=green] (0, 0, 0) -- (3, 0, 0) node[scale=0.6, anchor=west] {X};
+\draw[->, color=blue] (0, 0, 0) -- (0, 3, 0) node[scale=0.6, anchor=south] {Y};
+\draw[->, color=red] (0, 0, 0) -- (0, 0, 3) node[scale=0.6, anchor=north east] {Z};
+
+\draw[->, color=black] (0, 0, 0) -- (4, 1, 0) node (a) {};
+\draw[->, color=black] (0, 0, 0) -- (4, -1, 0) node (b) {};
+\draw[<->, color=gray] (a) -- (b) node[right] {$\Delta y$};
+
+\draw[->, color=black] (0, 0, 0) -- (1, 4, 0) node (a) {};
+\draw[->, color=black] (0, 0, 0) -- (-1, 4, 0) node (b) {};
+\draw[<->, color=gray] (a) -- (b) node[above] {$\Delta x$};
+
+
+\draw[->] (0, 0, 0) -- (-1, 0, 4) node (a) {};
+\draw[->] (0, 0, 0) -- (1, 0, 4) node (b) {};
+\draw[<->, color=gray] (a) -- (b) node[below] {$\Delta z$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{document}
