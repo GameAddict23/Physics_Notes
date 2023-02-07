@@ -1,0 +1,59 @@
+\documentclass{article}
+
+\usepackage[letterpaper, top=0.5in, bottom=0.6in, left=0.5in, right=0.5in]{geometry}
+\usepackage{microtype}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath, cancel}
+
+\title{Vectors}
+\author{Laith}
+\date{2/6/2023}
+
+\newcommand{\f}[1]{\mathrm{#1}}
+
+\patchcmd\subequations
+ {\theparentequation\alph{equation}}
+ {\subequationsformat}
+ {}{}
+\newcommand{\subequationsformat}{\theparentequation.\arabic{equation}}
+
+\begin{document}
+\maketitle
+
+\section{Example Problem}
+\begin{subequations}
+A ball is thrown at time $t=0$. Determine the time it hits the ground.
+\begin{figure}[H]
+    \begin{tikzpicture}
+        \draw[-stealth] (0, 0) -- (0, 5) node[above] {$z$}; 
+        \draw[-stealth] (0, 0) -- (10, 0) node[right] {$y$}; 
+
+        \draw[-stealth, solid, thick, red] (0, 0) -- (3, 3);
+        \draw[-stealth, dotted, thick, blue] (3, 3) .. controls (5, 5) and (7, 3.5) .. (9, 0);
+
+        \draw (1, 0) arc (0:44:1) node[below right, xshift=8] {$\theta$};
+
+        \draw (0, -0.5) -- (9, -0.5);
+        \draw (0, -0.5) -- (0, -0.2);
+        \draw (9, -0.5) -- (9, -0.2);
+        \node[below] at (4.5, -0.6) {$D=?$};
+
+        \node[above right] at (9, 0) {$t_c$};
+    \end{tikzpicture}
+\end{figure}
+
+\begin{align}
+    &\f{y}(t) = v_0\cos(\theta)t \text{\hspace{1cm}} \f{z}(t) = v_0\sin(\theta)t-\frac{1}{2}gt^2 \\
+    &\text{When the ball hits the ground at time $t_c$ , $\f{z}(t_c)=0$} \\
+    &\f{z}(t_c) = v_0\sin(\theta)(t_c)-\frac{1}{2}g(t_c)^2 = 0 \\
+    &t_c(v_0\sin(\theta)-\frac{1}{2}g\cdot t_c) = 0 \\
+    &\Rightarrow t_c = 0 \text{\hspace{0.1cm}} \biggr\rvert \text{\hspace{0.1cm}} v_0\sin(\theta)-\frac{1}{2}g\cdot t_c = 0 \\
+    &\cancel{t_c = 0} \text{\hspace{0.1cm}} \biggr\rvert \text{\hspace{0.1cm}} v_0\sin(\theta)-\frac{1}{2}g\cdot t_c = 0 \\
+    &v_0\sin(\theta)-\frac{1}{2}g\cdot t_c = 0 \\
+    &\Rightarrow v_0\sin(\theta) = \frac{1}{2}g\cdot t_c \Rightarrow \boxed{t_c = \frac{2(v_0\sin(\theta))}{g}}
+\end{align}
+
+\end{subequations}
+
+\end{document}
