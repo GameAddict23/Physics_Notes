@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tikz, tikz-3dplot, pgfplots}
+\usepackage{microtype}
+\usepackage[letterpaper]{geometry}
+\usepackage{float}
+
+\pgfplotsset{compat=newest}
+
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\x}{\mathrm{x}}
+\newcommand{\y}{\mathrm{y}}
+\newcommand{\z}{\mathrm{z}}
+\newcommand{\vel}{\mathrm{v}}
+\newcommand{\ddt}[1]{\frac{\mathrm{d}#1}{\dt}}
+\newcommand{\dydt}{\frac{\mathrm{d}y}{\dt}}
+
+\title{Newton's Law}
+\date{2/6/2023}
+\author{Laith}
+
+\begin{document}
+\maketitle
+
+\section{Laws:}
+
+\subsection*{First Law:}
+    If an object is not experiencing the effect of any 
+    force, then it will either remain stationary \textbf{or}
+    keep moving with constant \underline{velocity}.
+
+\subsection*{Second Law:}
+    If force $\va{F}$ is acting on an object with 
+    mass $m$, then the acceleration $\va{a}$ is given by:
+    \[\va{F}=m\va{a}\]
+
+\begin{figure}[H]
+    \begin{tikzpicture}
+        \draw (0, 0) -- (15, 0);
+
+        \draw[thick] (1, 0) -- (1, 2);
+        \draw[thick] (1.5, 0) -- (1.5, 1.5);
+        \draw[thick] (4.5, 0) -- (4.5, 1.5);
+        \draw[thick] (1.5, 1.5) -- (4.5, 1.5);
+        \draw[thick] (1, 0) -- (1.5, 0);
+        \draw[thick] (4.5, 0) -- (5, 0);
+        \draw[thick] (5, 0) -- (5, 2);
+        \draw[thick] (1, 2) -- (5, 2);
+        \draw (2, 2) -- (2, 3);
+        \draw (4, 2) -- (4, 3);
+        \draw (2, 3) -- (4, 3);
+
+        \draw[blue, stealth-stealth] (2.5, 0) node[below] {$m_g$} -- (2.5, 4) node[above] {$N$};
+
+        \node at (3, 2.5) {$m$};
+    \end{tikzpicture} 
+\end{figure}
+
+% You are standing distance $d=2\mathrm{m}$ from your neighbor wall.
+% The window is at height $h=1\mathrm{m}$ from the ground. You can 
+% kick the ball such that it starts moving with speed $v=1\mathrm{m/s}$.
+% With what angle with horizon should you kick the ball so that
+% it hits the window?
+
+\end{document}

@@ -17,6 +17,7 @@
 \newcommand{\inter}{\int_{t_1}^{t_2}}
 \newcommand{\tvert}{\biggr\rvert_{t_1}^{t_2}}
 \newcommand{\derv}{\frac{\mathrm{d}}{\mathrm{d}t}}
+\newcommand{\ddx}{\frac{\mathrm{d}}{\mathrm{d}x}}
 
 \patchcmd\subequations
  {\theparentequation\alph{equation}}
@@ -165,29 +166,46 @@
 	\subsection{The Police Car and the Speeding Car}
 	A car is moving with a constant speed $v$. It passes a police car on the side of the road.
 	The officer realized that the speed of the car was over the limit and starts to chase it at
-	time $t_1=10\,\mathrm{s}$ after the car passed by. The police car moves with a constant acceleration 
-	of $a=10\,\mathrm{m/s^2}$ and reaches the car at $t_2=30\,\mathrm{s}$. What is the velocity of the
+	time $t=10\,\mathrm{s}$ after the car passed by. The police car moves with a constant acceleration 
+	of $a=10\,\mathrm{m/s^2}$ and reaches the car at $t=30\,\mathrm{s}$. What is the velocity of the
 	speeding car?
 	\subsubsection{Solution}
 	Lets draw the scenario:
 	\begin{figure}[hh]
 	\begin{center}
 	\begin{tikzpicture}
+		\node[above] at (-1, 5) {\underline{Before chase started:}};
+		\draw[] (-1, 4) -- (5, 4);
+
+		\node[above, scale=1, color=blue] at (0, 4) (p) {$P_1C_1$};
+		\node[above, scale=1, color=red] at (2, 4) (c) {$C_2$};
+
+		\node[scale=3, color=blue] at (0, 4) (p1) {.};
+		\node[scale=3, color=red] at (2, 4) (p2) {.};
+		
+		\node[below, scale=0.8] at (0, 4) (p) {$t=0\,\mathrm{s}$};
+		\node[below, scale=0.8] at (2, 4) (c) {$t=10\,\mathrm{s}$};
+		\node[below, scale=0.8] at (2, 4-0.4) (x) {$x_{car}=?\,\mathrm{m}$};
+		\node[below, scale=0.8] at (0, 4-0.4) (x) {$x_{police}=0\,\mathrm{m}$};
+		\node[below, scale=0.8] at (0, 4-0.8) (x) {$x_{police}=x_{car}\,\mathrm{m}$};
+
+		\node[above] at (-1, 1) {\underline{After chase started:}};
 		\draw[] (-1, 0) -- (5, 0);
 
-		\node[above, scale=1, color=blue] at (0, 0) (p) {$P_{x_1}$};
-		\node[above, scale=1, color=red] at (2, 0) (c) {$C_{x_1}$};
-		\node[above, scale=1, color=ForestGreen] at (4, 0) (x) {$C_{x_2}\,P_{x_2}$};
+		\node[above, scale=1, color=blue] at (0, 0) (p) {$P_1$};
+		\node[above, scale=1, color=red] at (2, 0) (c) {$C_1$};
+		\node[above, scale=1, color=ForestGreen] at (4, 0) (x) {$C_2\,P_2$};
 
 		\node[scale=3, color=blue] at (0, 0) (p1) {.};
 		\node[scale=3, color=red] at (2, 0) (p2) {.};
 		\node[scale=3, color=ForestGreen] at (4, 0) (p3) {.};
 		
-		\node[below, scale=0.8] at (0, 0) (p) {$t_1=10\,\mathrm{s}$};
-		\node[below, scale=0.8] at (2, 0) (c) {$t_1=10\,\mathrm{s}$};
-		\node[below, scale=0.8] at (2, -0.4) (x) {${x_1}_{car}=?\,\mathrm{m}$};
-		\node[below, scale=0.8] at (4, 0) (x) {$t_2=30\,\mathrm{s}$};
-		\node[below, scale=0.8] at (0, -0.4) (x) {${x_1}_{police}=0\,\mathrm{m}$};
+		\node[below, scale=0.8] at (0, 0) (p) {$t=10\,\mathrm{s}$};
+		\node[below, scale=0.8] at (2, 0) (c) {$t=10\,\mathrm{s}$};
+		\node[below, scale=0.8] at (2, -0.4) (x) {$x_{car}=?\,\mathrm{m}$};
+		\node[below, scale=0.8] at (0, -0.4) (x) {$x_{police}=0\,\mathrm{m}$};
+		\node[below, scale=0.8] at (4, 0) (x) {$t=30\,\mathrm{s}$};
+		\node[below, scale=0.8] at (4, -0.4) (x) {$x_{car}=x_{police}$};
 	\end{tikzpicture}
 	\end{center}
     \end{figure}
@@ -195,11 +213,11 @@
 	Lets list our known and unknown variables:
 	\begin{align*}
 		&\mathrm{\underline{Knowns}}\\
-		&t_1 =10\,\mathrm{s} \\
+		&t_1 =0\,\mathrm{s} \\
 		&t_2 = 30\,\mathrm{s} \\
 		&{v_1}_{police} =0\,\mathrm{m/s} \\
 		&a_{police} =10\,\mathrm{m/s^2}\\
-		&{x_1}_{police} = 0\,\mathrm{m}\\
+		&\x_{police}(0) = \x_{police}(10) = 0\,\mathrm{m}\\
 		&a_{car} =0\,\mathrm{m/s^2}\\
 		&\mathrm{\underline{Unknowns}}\\
 		&{x_1}_{car} = ?\\
@@ -207,88 +225,30 @@
 		&{v_2}_{police} = ?\\
 		&{v}_{car} = ?
 	\end{align*}
-	We will make the initial position of the police car our reference position, thus it will
-	be equal to $0\,\mathrm{m}$. Since the speeding car has a constant speed, its acceleration
-	equals $0\,\mathrm{m/s^2}$ because the speed is not changing. 
 
-	We can prove this mathematically via the fact that taking the derivative of a constant will 
-	return $0$, and since acceleration is the derivative of velocity, our acceleration would be $0$.
+	\paragraph{Setting up the Math} We will make the position of the police car at time $t=0$ our
+	reference position. Since the position of the speeding car is equal to that of the police car at 
+	time $t=0$, we can say that $\x_{car}(0)=0$. We can also set $t_1=0$ and $t_2=30$, in which both cars
+	meet at time $t=30$ and start at the same position at time $t=0$. We will be integrating with respect to 
+	time, in which our limits will be $a=t_1$ and $b=t_2$.
 
-	In order to find the velocity of the speeding car, we need to consider the fact that the police car 
-	eventually reaches the speeding car, in which the police car started at a velocity of $0\,\mathrm{m/s}$
-	at time $t_1=10\,\mathrm{s}$ and reaches the speeding car at an unknown velocity at time $t_2=30\,\mathrm{s}$.
-	In order to reach the speeding car, the police car would have to reach a speed higher than the speeding car, thus
-	at some time $t$, $\vel_{police}(t) = \vel_{car}(t)$, and since the velocity of the speeding car is constant,
-	$\vel_{police}(t) = v_{car}$. In order to find the velocity of the speeding car, we need to find the time at which 
-	the two velocities were equal. 
-	\begin{subequations}
-	\begin{align}
-		\vel_{police}(t) &= v_{car}
-	\end{align}
-	We can integrate the acceleration of the police car to get $\vel(t)$. 
-	\begin{align}
-		\vel_{police}(t) &= \int a_{police} \,dt \\
-		\vel_{police}(t) &= \int 10 \,dt \\
-		\vel_{police}(t) &= 10t + C
-	\end{align}
-	In order to get rid of the unknown constant $C$, we can set our limits to be $b=t$ where $t$ is the time 
-	we are looking for and $a=t_1$ where $t_1=10\,\mathrm{s}$. 
-	\begin{align}
-		\vel_{police}(t) \biggr\rvert_{t_1}^{t} &= 10t + C \biggr\rvert_{t_1}^{t} \\
-		\vel_{police}(t) \biggr\rvert_{10}^{t} &= 10t + C \biggr\rvert_{10}^{t} \\
-		\vel_{police}(t) - \vel_{police}(10) &= [10(t) + C] - [10(10) + C] \\
-		\vel_{police}(t) - \vel_{police}(10) &= 10(t) - 10(10) \\
-		\vel_{police}(t) - \vel_{police}(10) &= 10t - 100
-	\end{align}
-	Since we know that the police car only starts to move at time $t_1=10\,\mathrm{s}$, we know that
-	$\vel_{police}(10) = 0$.
-	\begin{align}
-		\vel_{police}(t) - (0) &= 10t - 100 \\
-		\vel_{police}(t) &= 10t - 100
-	\end{align}
-	What this gives us is a function that tells the velocity of the police car for time $t \geq 10$.
+	Since the cars meet 30 seconds into the scenario, we can set up the below equation:
+	\[\x_{car}(30) = \x_{police}(30)\]
+	Naturally, we will need to find an expression for each function, and we can do so by integrating accelerations.
 
-	Now, $v_{police}(t) = v_{car}$ if $30 > t > 10$. Since both cars reach the same position at time $t_2=30\,\mathrm{s}$,
-	we can integrate velocity with limits $b=t$ and $a=t_1=10\,\mathrm{s}$ to get position, and then calculate the position at
-	time $t=30\,\mathrm{s}$. 
-	\begin{align}
-		\x_{police}(t) \biggr\rvert_{t_1}^{t} &= \int_{t_1}^{t} \vel_{police}(t) \,dt \\
-		\x_{police}(t) \biggr\rvert_{t_1}^{t} &= \int_{t_1}^{t} 10t - 100 \,dt \\
-		\x_{police}(t) \biggr\rvert_{10}^{t} &= \int_{10}^{t} 10t - 100 \,dt \\
-		\x_{police}(t) - \x_{police}(10) &= [10\frac{t^2}{2} - 100t] \biggr\rvert_{10}^{t} \\
-		\x_{police}(t) - \x_{police}(10) &= [5t^2 - 100t] \biggr\rvert_{10}^{t} \\
-		\x_{police}(t) - \x_{police}(10) &= [5t^2 - 100t] - [5(10)^2 - 100(10)] \\
-		\x_{police}(t) - \x_{police}(10) &= [5t^2 - 100t] - (-500) \\
-		\x_{police}(t) - \x_{police}(10) &= 5t^2 - 100t + 500 \\
-	\end{align}
-	Since we decided that the initial position of the police car would be our reference point, we know that
-	$\x_{police}(10)=0$.
-	\begin{align}
-		\x_{police}(t) - (0) &= 5t^2 - 100t + 500 \\
-		\x_{police}(t) &= 5t^2 - 100t + 500
-	\end{align}	
-	If $\x_{police}(t) = \x_{car}(t)$ at time $t=30\,\mathrm{s}$, we can integrate the velocity of the speeding car $v_{car}=C$
-	with the limts $b=t$ and $a=t_1=10\,\mathrm{s}$ to get its position function $\x_{car}(t)$. 
-	Then, we can set the position functions of both cars equal to each other, allowing us to solve for $C$.
-	\begin{align}
-		\x_{car}(t)  &= \int_{t_1}^{t} v_{car} \,\mathrm{d}t \\
-		\x_{car}(t)  &= \int_{t_1}^{t} C \,\mathrm{d}t \\
-		\x_{car}(t)  &= C\cdot t \biggr\rvert_{t_1}^{t} \\
-		\x_{car}(t) &= C\cdot t \biggr\rvert_{10}^{t} \\
-		\x_{car}(t)  &= C\cdot t - C\cdot 10 \\
-		\x_{car}(t)  &= C\cdot (t - 10) \\
-	\end{align}
-	Now we set the position function of the speeding car equal to the position function of the police car:
-	\begin{align}
-		\x_{car}(t) \biggr\rvert_{t=30} &= \x_{police}(t) \biggr\rvert_{t=30} \\
-		C\cdot(t-10) \biggr\rvert_{t=30} &= 5t^2-100t+500 \biggr\rvert_{t=30} \\
-		C\cdot((30)-10) &= 5(30)^2-100(30)+500 \\
-		C\cdot(20) &= 5(900)-3000+500 \\
-		20C &= 4500-3000+500 \\
-		20C &= 1500+500 \\
-		20C &= 2000 \\
-		\Rightarrow C &= \frac{2000}{20} \\
-		C &= 100 \,\mathrm{m/s}
-	\end{align}
+	We can determine the acceleration of the speeding car in two ways:
+	\begin{enumerate}[label=(\alph*)]
+		\item Differentiating velocity.
+		\item Making a logical deduction.
+	\end{enumerate}
+
+	With approach \textbf{a}, we know that the differentiating velocity will give us the acceleration of the speeding car,
+	and we also know that the velocity of the speeding car is constant.
+	By differentiating a constant, we will get $0$:
+	\[a = \ddx v_{car} = \ddx C = 0\]
+	Thus, our acceleration $a$ is $0\,\mathrm{m/s^2}$
+
+
+	\begin{subequations}	
 	\end{subequations}
 \end{document}
