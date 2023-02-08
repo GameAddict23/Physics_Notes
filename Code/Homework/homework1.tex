@@ -1,0 +1,97 @@
+\documentclass{article}
+
+\usepackage{amsmath, tikz, gensymb, cancel}
+\usepackage{microtype, enumitem, float}
+\usepackage[letterpaper]{geometry}
+
+\usetikzlibrary{calc}
+
+\newcommand{\x}{\mathrm{x}}
+\newcommand{\y}{\mathrm{y}}
+\newcommand{\z}{\mathrm{z}}
+
+\title{Homework Problem \#48}
+\author{Laith}
+\date{2/7/2023}
+
+\begin{document}
+\maketitle
+
+\section*{Problem}
+In Fig. 4-41, a ball is thrown up onto
+a roof, landing 4.00 s later at height $h=20.0$ m 
+above the release level. The ball's path just before 
+landing is angled at $\theta=60.0\degree$ with the 
+roof. 
+\begin{enumerate}[label=(\alph*)]
+    \item Find the horizontal distance $d$ it travels. 
+    (See the hint to Problem 39.)
+    \item What is the magnitude relative to the horizontal 
+    of the ball's initial velocity?
+    \item What is the angle relative to the horizontal of the 
+    ball's initial velocity?
+\end{enumerate}
+
+\begin{figure}[H]
+    \caption{Figure 4-11}
+    \begin{tikzpicture}
+        \draw[dashed] (-1, 0) -- (10, 0);
+
+        \draw[dashed, -stealth, very thick, red] (0, 0) .. controls (2, 5) and (4, 6) .. (6.5, 3);
+
+        \draw[solid] (5, 3) -- (8, 3);
+        \draw[solid] (5, 0) -- (5, 3);
+        \draw[solid] (8, 0) -- (8, 3);
+
+        \draw[stealth-] (6.5, 0) -- (6.5, 1);
+        \node at (6.5, 1.5) {$h$};
+        \draw[-stealth] (6.5, 2) -- (6.5, 3);
+
+        \draw (0, -2) -- (0, -1);
+        \draw (6.5, -2) -- (6.5, -1);
+
+        \draw[stealth-]  (0, -1.5) -- (3, -1.5);
+        \node at (3.25, -1.5) {$d$};
+        \draw[-stealth]  (3.5, -1.5) -- (6.5, -1.5);
+
+        \draw (6.5, 3) -- (5.9, 4);
+
+        \draw (6.2, 3.5) arc (-270:-180:0.5) node[above left, yshift=5, xshift=2] {$\theta$};
+
+    \end{tikzpicture} 
+\end{figure}
+
+\newpage
+\section*{Solution}
+
+\subsection*{Part (a)}
+First we need to find the distance $d$. Since this distance is 
+horizontal, we can define it as the function $\y(t)$. We can 
+determine $\y(t)$ to be equal to $v_0\cos(\theta)t$. We already know 
+that our time will be $t=0$ as that is when the ball is thrown.
+However, we do not know what our initial velocity $v_0$ is. 
+We also can't solve for $v_0$ since $\y(t)$ and the angle at which the 
+ball was thrown are also unknown. We do know that our height at $t=4$ is 
+20 m and the ball lands with an angle of $\theta=60\degree$. So, 
+by defining our height as the function $\z(t)$, which will be equal to 
+$v_0\sin(\theta)t-\frac{1}{2}gt^2$, in which $\z(4)$ = 0, we can solve for $v_0$ as that will be our only unknown,
+and then we can substitute $v_0$ to get distance.
+\begin{align}
+    &\z(t) = v_0\sin(\theta)t -\frac{1}{2}gt^2\\
+    &\z(4) = v_0\sin(60)(4) -\cancelto{5}{\frac{1}{2}(10)}(4)^2\\
+    &h = v_0\frac{\sqrt3}{\cancelto{1}{2}}(\cancelto{2}{4}) - 5(16) \\
+    &20 = v_02\sqrt3 - 80 \Rightarrow 100 = v_02\sqrt3\\
+    &\Rightarrow v_ 0 = \frac{10\sqrt3}{3} = \frac{10}{3}\sqrt3
+\end{align}
+We find that our initial velocity is $\frac{10}{3}\sqrt3$ m/s and we can now substitute 
+this back into our equation for distance:
+\begin{align}
+    &\y(t) = v_0\cos(\theta)t \\
+    &\y(4) = (\frac{10}{3}\sqrt3)\cos(60)(4) \\
+    &d = (\frac{10}{3}\sqrt3)\cancelto{2}{(\frac{1}{2})(4)} \\
+    &d = 2(\frac{10}{3}\sqrt3) = \frac{20}{3}\sqrt3
+\end{align}
+Our answer:
+\[\boxed{d = \frac{20}{3}\sqrt3\,\mathrm{m}}\]
+
+\end{document}
