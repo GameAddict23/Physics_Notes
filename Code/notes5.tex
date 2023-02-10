@@ -182,22 +182,23 @@ $x$ and $y$ components:
 Now, using the angle $\theta_3$ formed between $Mg_y$ and the ground, we can solve 
 for $Mg_y$ using $Mg$ and $\sin$:
 \begin{align*}
-    &\sin(\theta_3) = \frac{Mg}{Mg_y} \\
+                   &\sin(\theta_3) = \frac{Mg}{Mg_y} \\
     \intertext{Since $Mg_y$ is directed downwards, the value of $Mg_y$ is negative, thus we need to multiply by $-1$.}
-    \Rightarrow \, &\boxed{Mg_y = -\sin(\theta_3)Mg}
+    \Rightarrow \, &Mg_y = -\frac{Mg}{\sin(\theta_3)} \\
+                   &\boxed{Mg_y = -\csc(\theta_3)Mg}
 \end{align*}
 Since there are no other forces acting on the box with respect to $y$, we can sum these two forces
 to get the $y$-component of the net force.
 \begin{align*}
     \sum {F_{net}}_y &= N + Mg_y  \\
-                   &= N + (-\sin(\theta_3)Mg)  \\
-                   &= N - \sin(\theta_3)Mg  \\
+                   &= N + (-\csc(\theta_3)Mg)  \\
+                   &= N - \csc(\theta_3)Mg  \\
 \end{align*}
 Thus: 
 \[ \sum {F_{net}}_y = N - \sin(\theta_3)Mg \]
 
 Finally, we have the $x$ and $y$ components of $F_{net}$:
-\[ \boxed{\sum F_{net} = (\sin(\theta_2)Mg, \, N-\sin(\theta_3)Mg)} \]
+\[ \boxed{\sum F_{net} = (\sin(\theta_2)Mg, \, N-\csc(\theta_3)Mg)} \]
 
 % \noindent If the box starts from rest, how long does it take 
 % for it to come distance $l=1$ m down the incline?
