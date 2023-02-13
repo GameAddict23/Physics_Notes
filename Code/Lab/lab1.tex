@@ -1,11 +1,8 @@
 \documentclass{article}
 
 \usepackage[table]{xcolor}
-\usepackage{amsmath, physics, gensymb, microtype, float, multicol, fancyhdr, hyperref}
-\usepackage{tikz, tikz-3dplot, pgfplots}
+\usepackage{amsmath, physics, tikz, microtype, float, fancyhdr, hyperref, enumitem}
 \usepackage[letterpaper, bottom=1in, top=1in, left=1in, right=1in]{geometry}
-
-\pgfplotsset{compat=newest}
 
 \newcommand{\dt}{\mathrm{d}t}
 \newcommand{\x}{\mathrm{x}}
@@ -21,6 +18,8 @@
  {}{}
 \newcommand{\subequationsformat}{\theparentequation.\arabic{equation}}
 
+\urlstyle{same}
+
 \pagestyle{fancy}
 
 \title{Report 1: Measurements}
@@ -28,19 +27,31 @@
 \author{Laith Toom}
 
 \begin{document}
-\maketitle 
-
+\maketitle
 \noindent Phys 207 Lab CD4
 
 \noindent \textbf{Instructor:} Georgios Goulas
 
 \noindent \textbf{Group:} Radjabov Jake and Tenzin Tsepak
 
-\vspace{1em}
-\hrule
+\newpage
 \section{Introduction}
 This lab is meant to explore the relationship between different variables, 
-or the lack thereof.
+or the lack thereof, and how measuring those variables in the real-word effects 
+those relationships. Almost all fields of science involve measuring different 
+quantities and identifying the relationships between them, thus it is important 
+to properly measure those quantites. Proper measurements do include using the 
+right equipment in the correct way, but it also means determing a method of
+measurement best suited for the quantity. Questions such as:
+\begin{enumerate}
+    \item At what intervals should data points be taken?
+    \item In what increments should a quantity be measured in?
+    \item What variables are accounted for and not accounted for 
+    in the given data?
+\end{enumerate}
+Effective measurements allow us to accurately determine whether or not a relationship 
+exists, and if there is one, what kind of relationship it is. Improper measurements
+or ineffective methods can result in inaccurate conclusions about the world we inhabit.
 
 \vspace{1em}
 \hrule
@@ -52,10 +63,10 @@ circumference of their head by using a rope and a ruler in cm. Then, we will tim
 two of their heartbeats. We will enter this data onto the computer to use at the end of the lab.
 
 \subsection{Estimate $\pi$}
-We are meant to find the circumference and diamater of various objects, then calculate 
+We are meant to find the circumference and diameter of various objects, then calculate 
 the ratio between the two using the formula:
 \[ \frac{C}{D}=\pi \]
-The calculated value will only be an esimate of $\pi$, but it should be relatively close.
+The calculated value will only be an estimate of $\pi$, but it should be relatively close.
 
 \subsubsection{3 Objects}
 There are 3 circular objects:
@@ -66,8 +77,8 @@ There are 3 circular objects:
 \end{enumerate}
 For each object, we measure their circumference and diameter using a ruler, in which these values
 will be recorded in a Microsoft Excel spreadsheet. Then, we create a scatter plot in Excel, with 
-the $x$-axis representing diameter and the $y$-axis representing circumfernece. Our estimate 
-of $\pi$ for this test will be the slope of the trendline of our poltted data.
+the $x$-axis representing diameter and the $y$-axis representing circumference. Our estimate 
+of $\pi$ for this test will be the slope of the trendline of our plotted data.
 
 \subsubsection{Toothpicks}
 We form a circular shape using toothpicks. The circumference will be the amount 
@@ -83,7 +94,7 @@ the object to find the diameter. We will then calculate our estimate of $\pi$ us
 measurements.
 
 \subsection{Calculate Uncertainty in Measurements}
-We will calculate the potential uncertaintiy in measuring length using the formula:
+We will calculate the potential uncertainty in measuring length using the formula:
 \begin{align}
     A \pm \delta A = (A)\left[1\pm\frac{\delta A}{A}\right]
 \end{align}
@@ -94,7 +105,7 @@ and density using the formula:
 
 \subsubsection{Measure the Fish}
 We will measure the length of a printed image of a fish using a ruler in centimeters. Then, we will calculate
-the uncertaintiy of this measurement by taking the ± difference of the ticks on the ruler nearest to our
+the uncertainty of this measurement by taking the ± difference of the ticks on the ruler nearest to our
 measurement and dividing the difference in half.
 
 For example, if our measurement was 10.2 cm, and assuming our ruler measured in intervals of 0.5 cm, we
@@ -134,19 +145,21 @@ be heartbeat time and the $y$-axis will be head circumference.
 \subsection{Figures and Tables}
 \subsubsection{Pi Estimates}
 \begin{figure}[H]
-    \includegraphics[width=16cm]{lab1_plot1.png}
-    \caption{Circumference vs. Diamater of 3 Objects}
+    \caption{Circumference vs. Diameter of 3 Objects}
     \label{plot:1}
+    \includegraphics[width=16cm]{lab1_plot1.png}
 \end{figure}
 
 \setlength{\tabcolsep}{18pt}
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[H]
+\caption{Diameter and Circumference of 3 Objects}\vspace{0.5em}
+\label{tab:1}
 \centering
 \begin{tabular}{|c|c|c|}
     \hline
     \rowcolor{black}
-    \color{white} Object \# & \color{white} Diamater (cm) & \color{white} Circumference (cm) \\
+    \color{white} Object \# & \color{white} Diameter (cm) & \color{white} Circumference (cm) \\
     \hline
     1 & 4.0 cm & 13.2 cm \\
     \hline
@@ -155,18 +168,19 @@ be heartbeat time and the $y$-axis will be head circumference.
     3 & 4.3 cm & 13.9 cm \\
     
     \hline
-\end{tabular} 
-\caption{Diamater and Circumference of 3 Objects}
+\end{tabular}
 \end{table}
 
 \subsubsection{Oscillation and Pendulum Length}
 \begin{figure}[H]
-    \includegraphics*[width=16cm]{lab1_plot3.png}
     \caption{Period of Oscillation vs. Pendulum Length}
     \label{plot:2}
+    \includegraphics[width=16cm]{lab1_plot3.png}
 \end{figure}
 
 \begin{table}[H]
+\caption{Rope Length vs. Period of Oscillation}\vspace{0.5em}
+\label{tab:2}
 \centering
 \begin{tabular}{|c|c|}
     \hline
@@ -185,11 +199,12 @@ be heartbeat time and the $y$-axis will be head circumference.
 
     \hline
 \end{tabular} 
-\caption{Rope Length vs. Period of Oscillation}
 \end{table}
 
 \subsubsection{Density of Wood}
 \begin{table}[H]
+\caption{Mass, Volume, and Density of Wood Block}\vspace{0.5em}
+\label{tab:3}
 \centering
 \begin{tabular}{|c|c|c|}
     \hline
@@ -200,17 +215,18 @@ be heartbeat time and the $y$-axis will be head circumference.
 
     \hline
 \end{tabular} 
-\caption{Mass, Volume, and Density of Wood Block}
 \end{table}
 
 \subsubsection{Time Between Heartbeats vs Head Circumference}
 \begin{figure}[H]
-    \includegraphics[width=16cm]{lab1_plot2.png}
     \caption{Heart Pulse vs. Head Circumference}
     \label{plot:3}
+    \includegraphics[width=16cm]{lab1_plot2.png}
 \end{figure}
 
 \begin{table}[H]
+\caption{Time Between Heartbeats vs. Head Circumference}\vspace{0.5em}
+\label{tab:4}
 \centering
 \begin{tabular}{|c|c|}
     \hline
@@ -239,7 +255,6 @@ be heartbeat time and the $y$-axis will be head circumference.
 
     \hline
 \end{tabular} 
-\caption{Time Between Heartbeats vs. Head Circumference}
 \end{table}
 
 \subsection{Calculations}
@@ -267,28 +282,45 @@ The error propagation of the mass, which will be the $\delta A$ of formula \eqre
 can be calculated by dividing the increment of measurement by 2:
 \[ \delta A = \pm\frac{0.01\,\mathrm{g}}{2} = \pm0.05\,\mathrm{g} \]
 The error propagation of the volume $\delta B$ will require us to calculate the relative uncertainties
-of all 3 measured dimensions. 
+of all 3 measured dimensions. The absolute uncertainties of all 3 dimensions will be 0.0005 cm since
+they were all measured using the same caliper:
+\[ \delta l = \delta w = \delta h = \frac{0.001\,\mathrm{cm}}{2} = 0.0005\,\mathrm{cm} \]
 
 \noindent The relative uncertainty of length $l$:
-\[ \delta l = \pm\frac{0.001 \,\mathrm{cm}}{l} \cdot 100 = \pm\frac{0.001 \,\mathrm{cm}}{23.8 \,\mathrm{cm}} \cdot 100 \approx \pm0.0042017\,\% \]
+\begin{align*}
+    \delta l = \pm\frac{\delta l}{l} \cdot 100 = \pm\frac{0.0005 \,\mathrm{cm}}{23.8 \,\mathrm{cm}} \cdot 100 \approx \pm0.0021008\,\% 
+\end{align*}
 The relative uncertainty of length $w$:
-\[ \delta w = \pm\frac{0.001 \,\mathrm{cm}}{w} \cdot 100 = \pm\frac{0.001 \,\mathrm{cm}}{5.448 \,\mathrm{cm}} \cdot 100 \approx \pm0.0183554\,\% \]
+\begin{align*}
+    \delta w = \pm\frac{\delta w}{w} \cdot 100 = \pm\frac{0.0005 \,\mathrm{cm}}{5.448 \,\mathrm{cm}} \cdot 100 \approx \pm0.0091777\,\% 
+\end{align*}
 The relative uncertainty of length $h$:
-\[ \delta h = \pm\frac{0.001 \,\mathrm{cm}}{h} \cdot 100 = \pm\frac{0.001 \,\mathrm{cm}}{0.942 \,\mathrm{cm}} \cdot 100 \approx \pm0.1061571\,\% \]
+\begin{align*}
+    \delta h = \pm\frac{\delta h}{h} \cdot 100 = \pm\frac{0.0005 \,\mathrm{cm}}{0.942 \,\mathrm{cm}} \cdot 100 \approx \pm0.0530786\,\% 
+\end{align*}
 When we multiply all 3 dimensions, we will add the uncertainties:
 \[ v = (l\pm\delta l)(w\pm\delta w)(h\pm\delta h) = lwh\pm(\delta l + \delta w + \delta h) \]
-When we substitue in our measurements, we get:
-\[ v = 122.14 \,\mathrm{cm}^3 \pm 0.1287142\,\% \]
+When we substitute in our measurements, we get:
+\[ v = 122.14 \,\mathrm{cm}^3 \pm 0.0643571\,\% \]
 and converting to absolute uncertainty:
-\[ v = 122.14 \pm 15.72 \,\mathrm{cm}^3 \]
+\[ v = 122.14 \pm 0.07861 \,\mathrm{cm}^3 \]
 Using formula \eqref{eq:2}, we find that our uncertainty is:
-\[ p = \frac{72.3\pm0.05\,\mathrm{g}}{122.14\pm15.72\,\mathrm{cm}^3}\]
+\begin{align*}
+    \frac{72.3\pm0.05\,\mathrm{g}}{122.14\pm0.07861\,\mathrm{cm}^3} 
+&= \left(\frac{72.3}{122.14}\right)\left[1\pm\left(\frac{0.05}{72.3}+\frac{0.07861}{122.14}\right)\right]
+\\ &\Rightarrow (p)\left[1\pm(0.001335)\right]
+\\ &\rightarrow \boxed{\delta p = \pm 0.1335\,\%}
+\end{align*}
 
 \vspace{1em}
 \hrule
 
 \section{Questions}
-\subsection{Discuss the limitations of these 
+
+\newcounter{q} % question number
+\newcommand{\numberQ}{\refstepcounter{q}\arabic{q}\quad} % numbers a question
+
+\paragraph*{\numberQ Discuss the limitations of these 
 methods for calculating $\pi$. Which method was 
 the best? The worst? Are there improvements to be made?}
 
@@ -309,11 +341,19 @@ from forming multiple circular shapes from different amounts of toothpicks, then
 the average of the calculated $\pi$ estimates. The third and final method could benefit 
 from plotting more points along the circumference of the circular object. 
 
-\subsection{Try to match your piece of wood with a known 
+\paragraph*{\numberQ Try to match your piece of wood with a known 
 tree. Discuss whether you can be certain of your 
 identification.}
+I narrowed down the identity of the wood to either \emph{Pine, jack} and \emph{Sourwood} 
+as both types have a density roughly equivalent to the density of the wood, 
+0.59 g/$\,\mathrm{cm}^3$. 
 
-\subsection{Based only on your experimental data, can you 
+While the uncertainty of the density was calculated to be $\pm0.1335\,\%$, that only means 
+the true density of the wood block could be between 0.5892 and 0.5908 g/$\,\mathrm{cm}^3$,
+which both round to 0.59 g/$\,\mathrm{cm}^3$. Thus, I can be certain of this identification.
+
+
+\paragraph*{\numberQ Based only on your experimental data, can you 
 say how the time for one swing relates to the length 
 of the pendulum? Is there a clear functional 
 dependance? What could you do to make the experiment better?}
@@ -323,14 +363,81 @@ the period of oscillation depends on the length of the pendulum. The experiment
 would benefit from recording more than 5 data points as well as specifying a specific 
 interval of rope length between data points.
 
-\subsection{Is there a correlation between the circumference
+\paragraph*{\numberQ Is there a correlation between the circumference
 of someone's head and the time between heartbeats? Would you 
 expect there to be one?}
+According to figure \ref{plot:3}, there is no correlation between the circumference 
+of someone's head and the time between heartbeats. The correlation coefficient 
+$R^2=0.0012$ of the trendline is quite low and visually, the data does not form any 
+clear pattern.
+
+However, I would expect there to be some kind of correlation because if there was no 
+correlation, then head circumference would not average between 50 and 60 cm, with the 
+exception of one outlier of 36 cm at a pulse of 0.55 s, see table \ref{tab:4}. 
+The two variables would need some kind of proportional relationship, most likely 
+with a third unaccounted for variable, in order to for this average to appear.
 
 \vspace{1em}
 \hrule
 \vspace{1em}
 \section{Conclusion}
+\paragraph {Experiment 1: Estimating $\pi$} While the results were not exactly $\pi$,
+it is clear that there is a relationship between circumference $C$ and diameter $D$,
+in which the ratio between the two variables is always $\pi$. Regardless of the method 
+used and its effectiveness, the result always remained close to $\pi$.
+
+\paragraph{Experiment 2: Calculating Uncertainty} The first part of this experiment, in 
+which we calculated the uncertainty in measuring the length of the fish, did not reveal
+much as it did introduce us to the idea of measuring uncertainty.
+
+However, the second part, calculating the density of the wood block, revealed that the 
+relationships between variables also extends into their uncertainties. In this case, 
+there were 6 variables: mass $m$, v $volume$, length $l$, width $w$, height $h$, and 
+density $p$. $p$ is the ratio between $m$ and $v$, and so any uncertainties in those 
+two variables will be reflected in $p$. However, $v$ is the product of $l$, $w$, and $h$, 
+which all have their own uncertainties. Thus, the uncertainties in those variables will 
+be reflected in both $v$ and $p$. Fortunately, the uncertainties of $l$, $w$, and $h$ were 
+negligible enough that the uncertainty of $v$ was also negligible. The uncertainty of $m$ 
+did not rely on any other variables and only on the equipment that was used. The same goes 
+for $l$, $w$, and $h$. Thus, while uncertainty can be carried further down into variable 
+relationships, the biggest impact on uncertainty is the equipment or method of measure used. 
+
+Looking back on experiment 1, where we used toothpicks and Google Maps to calculate $\pi$,
+the ineffectiveness of both methods, potentially due to more room for human error such as:
+\begin{enumerate}
+    \item Not using enough toothpicks.
+    \item Not plotting enough points while using the Google Maps feature.
+\end{enumerate}
+resulted in a less accurate estimate of $\pi$, which might mean that there was a higher 
+level of uncertainty in these methods. In my experiment with the toothpicks, the last 
+toothpick in the line of toothpicks used to measure the diameter of the shape extended out 
+of the shape. Since both the circumference and diameter were to be measured in terms of 
+toothpicks, we roughly estimated how much of the last toothpick remained in the shape. 
+This was not a reliable method as we roughly measured this toothpick in tenths, meaning 
+the uncertainty of the diameter could be quite significant. 
+
+\paragraph{Experiment 3: Time of Oscillations} While we did find linear a relationship between 
+oscillations and pendulum length, the domain of our graph, particularly the distance 
+between data points, could have been larger. If you restrict almost any function to a 
+small enough domain, it will appear linear, thus this could have been the case with our 
+experiment. It is clear that a functional dependance exists, but whether that relation is
+linear or something else would require another trial.
+
+\paragraph{Experiment 4: Graphing Head Circumference with Respect to Heartbeat Pulse} Despite 
+the lack of a correlation in our data, see figure \ref{plot:3}, it is important to consider 
+that there were only 10 data points, in which all individuals were around the same age 
+group, young adults. With age being a potential variable, in which children see a lot 
+of physical changes as they approach adulthood, we cannot conclude that there is no 
+correlation, only that we did not find one given our available data pool.
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+\section{References}
+\begin{enumerate}[label=(\arabic*)]
+    \item Oliver Seely ``Physical Properties of Common Woods'' 
+    \underline{\url{http://www2.csudh.edu/oliver/chemdata/woods.htm}}
+\end{enumerate}
 
 
 \end{document}
