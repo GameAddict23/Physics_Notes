@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \usepackage[table]{xcolor}
-\usepackage{amsmath, physics, gensymb, microtype, float, multicol}
+\usepackage{amsmath, physics, gensymb, microtype, float, multicol, fancyhdr, hyperref}
 \usepackage{tikz, tikz-3dplot, pgfplots}
 \usepackage[letterpaper, bottom=1in, top=1in, left=1in, right=1in]{geometry}
 
@@ -20,6 +20,8 @@
  {\subequationsformat}
  {}{}
 \newcommand{\subequationsformat}{\theparentequation.\arabic{equation}}
+
+\pagestyle{fancy}
 
 \title{Report 1: Measurements}
 \date{2/10/2023}
@@ -81,7 +83,14 @@ the object to find the diameter. We will then calculate our estimate of $\pi$ us
 measurements.
 
 \subsection{Calculate Uncertainty in Measurements}
-We will calculate the potential uncertaintiy in different measurements.
+We will calculate the potential uncertaintiy in measuring length using the formula:
+\begin{align}
+    A \pm \delta A = (A)\left[1\pm\frac{\delta A}{A}\right]
+\end{align}
+and density using the formula:
+\begin{align}
+    \left(\frac{A\pm\delta A}{B\pm\delta B}\right) = \left(\frac{A}{B}\right)\left[1\pm\left(\frac{\delta A}{A}+\frac{\delta B}{B}\right)\right]\label{eq:2}
+\end{align}
 
 \subsubsection{Measure the Fish}
 We will measure the length of a printed image of a fish using a ruler in centimeters. Then, we will calculate
@@ -121,6 +130,9 @@ be heartbeat time and the $y$-axis will be head circumference.
 \vspace{1em}
 \hrule
 \section{Data and Calculations}
+
+\subsection{Figures and Tables}
+\subsubsection{Pi Estimates}
 \begin{figure}[H]
     \includegraphics[width=16cm]{lab1_plot1.png}
     \caption{Circumference vs. Diamater of 3 Objects}
@@ -147,6 +159,7 @@ be heartbeat time and the $y$-axis will be head circumference.
 \caption{Diamater and Circumference of 3 Objects}
 \end{table}
 
+\subsubsection{Oscillation and Pendulum Length}
 \begin{figure}[H]
     \includegraphics*[width=16cm]{lab1_plot3.png}
     \caption{Period of Oscillation vs. Pendulum Length}
@@ -175,6 +188,7 @@ be heartbeat time and the $y$-axis will be head circumference.
 \caption{Rope Length vs. Period of Oscillation}
 \end{table}
 
+\subsubsection{Density of Wood}
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -182,13 +196,14 @@ be heartbeat time and the $y$-axis will be head circumference.
     \rowcolor{black}
     \color{white} Mass (g) & \color{white} Volume ($\mathrm{cm}^3$) & \color{white} Density ($\mathrm{g}/\mathrm{cm}^3$) \\
     \hline
-    72.3 g & 122.14 $\mathrm{cm}^3$ & 13.2 $\mathrm{g}/\mathrm{cm}^3$ \\
+    72.3 g & 122.14 $\mathrm{cm}^3$ & 0.59 $\mathrm{g}/\mathrm{cm}^3$ \\
 
     \hline
 \end{tabular} 
 \caption{Mass, Volume, and Density of Wood Block}
 \end{table}
 
+\subsubsection{Time Between Heartbeats vs Head Circumference}
 \begin{figure}[H]
     \includegraphics[width=16cm]{lab1_plot2.png}
     \caption{Heart Pulse vs. Head Circumference}
@@ -202,35 +217,115 @@ be heartbeat time and the $y$-axis will be head circumference.
     \rowcolor{black}
     \color{white} Time Between Heartbeats (s) & \color{white} Head Circumference (cm) \\
     \hline
-    0.8 s  & 2.46 cm \\
+    0.8 s  & 60.0 cm \\
     \hline
-    0.59 s & 2.28 cm \\
+    0.59 s & 60.0 cm \\
     \hline
-    0.33 s & 1.99 cm \\
+    0.33 s & 59.0 cm \\
     \hline
-    0.7 s  & 1.79 cm \\
+    0.7 s  & 58.5 cm \\
     \hline
-    0.49 s & 1.61 cm \\
+    0.49 s & 57.2 cm \\
     \hline
-    0.65 s & 1.61 cm \\
+    0.65 s & 57.0 cm \\
     \hline
-    0.67 s & 1.61 cm \\
+    0.67 s & 55.8 cm \\
     \hline
-    1.15 s & 1.61 cm \\
+    1.15 s & 54.0 cm \\
     \hline
-    0.63 s & 1.61 cm \\
+    0.63 s & 52.0 cm \\
     \hline
-    0.55 s & 1.61 cm \\
+    0.55 s & 36.0 cm \\
 
     \hline
 \end{tabular} 
 \caption{Time Between Heartbeats vs. Head Circumference}
 \end{table}
 
-\hrule
+\subsection{Calculations}
+\subsubsection{Density of Wood Block}
+The dimensions of the wood block were:
+\[ l = 23.8\,\mathrm{cm} \quad w = 5.448\,\mathrm{cm} \quad  h = 0.942\,\mathrm{cm}\]
+Thus the volume was:
+\[ 
+    v = 
+    l\cdot w \cdot h = 
+    23.8\,\mathrm{cm} \cdot 5.448\,\mathrm{cm} \cdot 0.942\,\mathrm{cm} 
+    \approx122.14\,\mathrm{cm}^3
+\]
+The mass of the wood block was $m=72.3$ g, thus the density was:
+\[
+    p = \frac{m}{v} = \frac{72.3\,\mathrm{g}}{122.14\,\mathrm{cm}^3} \approx 0.59 \,\mathrm{g/cm}^3    
+\]
+\subsubsection{Uncertainty in Density of Wood Block}
+Since the density $p$ consists of two quantities: mass $m$, which was measured using a scale 
+measuring in increments of 0.01 grams, and volume $v$, which was calculated using the product of 
+the 3 measured dimensions $l,\,w,\,$ and $h$, all measured using a caliper measuring in increments 
+of 0.001 centimeters. 
+
+The error propagation of the mass, which will be the $\delta A$ of formula \eqref{eq:2}, 
+can be calculated by dividing the increment of measurement by 2:
+\[ \delta A = \pm\frac{0.01\,\mathrm{g}}{2} = \pm0.05\,\mathrm{g} \]
+The error propagation of the volume $\delta B$ will require us to calculate the relative uncertainties
+of all 3 measured dimensions. 
+
+\noindent The relative uncertainty of length $l$:
+\[ \delta l = \pm\frac{0.001 \,\mathrm{cm}}{l} \cdot 100 = \pm\frac{0.001 \,\mathrm{cm}}{23.8 \,\mathrm{cm}} \cdot 100 \approx \pm0.0042017\,\% \]
+The relative uncertainty of length $w$:
+\[ \delta w = \pm\frac{0.001 \,\mathrm{cm}}{w} \cdot 100 = \pm\frac{0.001 \,\mathrm{cm}}{5.448 \,\mathrm{cm}} \cdot 100 \approx \pm0.0183554\,\% \]
+The relative uncertainty of length $h$:
+\[ \delta h = \pm\frac{0.001 \,\mathrm{cm}}{h} \cdot 100 = \pm\frac{0.001 \,\mathrm{cm}}{0.942 \,\mathrm{cm}} \cdot 100 \approx \pm0.1061571\,\% \]
+When we multiply all 3 dimensions, we will add the uncertainties:
+\[ v = (l\pm\delta l)(w\pm\delta w)(h\pm\delta h) = lwh\pm(\delta l + \delta w + \delta h) \]
+When we substitue in our measurements, we get:
+\[ v = 122.14 \,\mathrm{cm}^3 \pm 0.1287142\,\% \]
+and converting to absolute uncertainty:
+\[ v = 122.14 \pm 15.72 \,\mathrm{cm}^3 \]
+Using formula \eqref{eq:2}, we find that our uncertainty is:
+\[ p = \frac{72.3\pm0.05\,\mathrm{g}}{122.14\pm15.72\,\mathrm{cm}^3}\]
+
 \vspace{1em}
+\hrule
+
 \section{Questions}
-\subsection{Question 1}
+\subsection{Discuss the limitations of these 
+methods for calculating $\pi$. Which method was 
+the best? The worst? Are there improvements to be made?}
+
+The best method for estimating $\pi$ was taking the slope of 
+the linear trendline from the plotted diameters and circumferences 
+of the three objects. This is so because the value obtained from the
+slope had the least difference from $\pi$ compared to the other methods.
+
+Using Google Maps to calculate $\pi$ turned out to be the worst method 
+since the calculated value had the biggest difference from $\pi$ compared 
+to the other methods.
+
+We could improve the first method of calculation by measuring more than just 
+3 objects. Perhaps 6 or 9 would give us a more accurate value. The second method
+of calculation, in which we used tooth picks to form a circular shape, would benefit 
+from the use of more toothpicks in forming the circumference. It might also benefit 
+from forming multiple circular shapes from different amounts of toothpicks, then taking 
+the average of the calculated $\pi$ estimates. The third and final method could benefit 
+from plotting more points along the circumference of the circular object. 
+
+\subsection{Try to match your piece of wood with a known 
+tree. Discuss whether you can be certain of your 
+identification.}
+
+\subsection{Based only on your experimental data, can you 
+say how the time for one swing relates to the length 
+of the pendulum? Is there a clear functional 
+dependance? What could you do to make the experiment better?}
+Based on my experimental data, the time for one swing seems to have a 
+linear relationship to the length of the pendulum. Thus, it is clear that
+the period of oscillation depends on the length of the pendulum. The experiment 
+would benefit from recording more than 5 data points as well as specifying a specific 
+interval of rope length between data points.
+
+\subsection{Is there a correlation between the circumference
+of someone's head and the time between heartbeats? Would you 
+expect there to be one?}
 
 \vspace{1em}
 \hrule
