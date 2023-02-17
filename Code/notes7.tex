@@ -1,6 +1,6 @@
-\documentclass[12pt]{article}
+\documentclass{article}
 
-\usepackage{amsmath, microtype, tikz, physics, gensymb}
+\usepackage{amsmath, microtype, tikz, physics, gensymb, enumitem, etoolbox}
 \usepackage[letterpaper, bottom=1in, top=1in, left=1in, right=1in]{geometry}
 
 \patchcmd\subequations
@@ -9,6 +9,9 @@
  {}{}
 
 \newcommand{\subequationsformat}{\theparentequation.\arabic{equation}}
+
+% load after changing subequation formatting
+\usepackage{hyperref}
 
 \title{Physics Notes 7}
 \date{2/15/2023}
@@ -57,15 +60,15 @@ moving so that it comes off the ground?
         &T-Mg = MA  &\text{Where $T$ is the force of tension.} \\
         &T-mg = ma \\ 
         &A = -a \label{eq:1} \\
-        &T - Mg = M(-a) \Rightarrow T=Mg-Ma \\
+        &T - Mg = M(-a) \Rightarrow T=Mg-Ma
     \end{align}
-\end{subequations}
-In regards to line \ref{eq:1}, we can utilize the fact that 
+In regards to equation \ref{eq:1}, we can utilize the fact that 
 the objects are connected, thus both will move with the
 magnitude of acceleration:
 \[ \abs{A} = \abs{a} \] 
 but in opposite directions:
 \[ \boxed{A = -a} \quad \mathrm{or} \quad \boxed{-A = a} \]
+\end{subequations}
 
 \section{Newton's Third Law}
 ``For every force, there is an equal and opposite reaction.''
@@ -75,20 +78,60 @@ but in opposite directions:
 object $B$ also exerts force $-\va{F}$ on object $A$.
 
 \newpage
-\subsection{Example Problem}
+\subsection{Hypothetical}
 With what velocity will the boxes move?
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
-        \draw[-stealth] (-2, 0.5) -- (-0.1, 0.5) node[midway, yshift=10] {$F=1\,\mathrm{N}$};
+        \draw[-stealth] (-2, 0.5) -- (-0.1, 0.5) node[midway, yshift=10] {$P=1\,\mathrm{N}$};
         \draw (0, 0) -- (0, 1) -- (1, 1) node[midway, yshift=-15] {$m$} -- (1, 0) -- (0, 0);
         \draw (1, 0) -- (1, 2) -- (3, 2) node[midway, yshift=-30] {$M$} -- (3, 0) -- (0, 0);
     \end{tikzpicture}
 \end{figure}
+$P$ is the force vector acting on $m$.
+
+Using Newton's Third Law, we know that the force $m$ exerts on $M$ will result in 
+$M$ exerting a force on $m$, thus we have two forces:
 \begin{subequations}
     \begin{align}
-        &F + f_{M\rightarrow m} = ma \\
-        &f_{m\rightarrow M} = MA \\
+        &f_{m\rightarrow M} &\text{Force of $m$ on $M$.} \\
+        &f_{M\rightarrow m} &\text{Force of $M$ on $m$.}
+    \end{align}
+
+    According to Newton's Thrid Law, these forces act opposite to each other
+    with the same magnitude, meaning the have opposite directions but the same 
+    absolute force, thus:
+    \begin{align}
+        &f_{M\rightarrow m} = -f_{m\rightarrow M} \label{thirdlaw} &\text{Using Newton's Third Law.}
+    \end{align}
+
+    We can set up a few basic equations using these forces. We know that the force on an object 
+    is equal to its mass times its acceleration and also equal to the sum of forces acting 
+    on it. 
+    \bigskip
+    
+    \noindent Applying this to box $m$, we get:
+    \begin{align*}
+        &F = ma \\
+        &F = P + f_{M\rightarrow m} 
+    \end{align*}
+    Which gives us:
+    \begin{align}
+        &P + f_{M\rightarrow m} = ma
+    \end{align}
+    Applying this to box $M$, we get:
+    \begin{align*}
+        &F = MA \\
+        &F = f_{m\rightarrow M}
+    \end{align*}
+    Which gives us:
+    \begin{align}
+        &f_{m\rightarrow M} = MA
+    \end{align}
+    We now have a system of equations representing the scenario:
+    \begin{align}
+        &P + f_{M\rightarrow m} = ma \\
+        &f_{m\rightarrow M} = MA 
     \end{align}
     Let us assume that these are very hard boxes,
     something like metal.
@@ -103,12 +146,52 @@ With what velocity will the boxes move?
     If the small box $m$ were to hit the big box $M$ with a strong 
     enough force, $M$ would reach an acceleration higher than 
     that of $m$, but only for a time. This acceleration would then 
-    return to 0.  
+    return to 0. You can think of that force like a bat hitting a 
+    baseball. 
 
-    For purposes, we will assume that
+    For purposes, we will assume that $m$ is just pushing $M$, which 
+    means that the acceleration of both boxes are equal in both 
+    magnitude and direction:
+    \[ A = a \]
+    Thus, we can set up the previous equations as:
     \begin{align}
-        &f_{M\rightarrow m} = -f_{m\rightarrow M} &\text{Using Newton's Third Law.} \\
-        &f_{M\rightarrow m} = -f_{m\rightarrow M}
+        &P + f_{M\rightarrow m} = m(a) \label{eq:2} \\
+        &f_{m\rightarrow M} = M(a) \label{eq:3}
+    \end{align}
+    What this all accomplishes is leaving us with only 1 unknown variable
+    to solve for, acceleration $a$. Since we established that:
+    \[ f_{M\rightarrow m} = -f_{m\rightarrow M} \quad (\ref{thirdlaw}) \]
+    we can rewrite equation \ref{eq:2} as:
+    \begin{align}
+        &F + (-f_{m\rightarrow M}) = ma \\  
+        \Rightarrow &P - f_{m\rightarrow M} = ma \\
+        \Rightarrow &P - Ma = ma &\text{Using equation \ref{eq:3}}
+        \Rightarrow &P = ma + Ma \Rightarrow P = a(m+M) \\ 
+        \Rightarrow &\boxed{a = \frac{P}{m+M}}
+    \end{align}
+    Now, if given the values for $m$ and $M$ as well as $P$, we would be able to 
+    calculate acceleration. Since we are looking for velocity, we can integrate 
+    acceleration to get velocity, however it would be as a function of time $t$.
+    As a theoretical answer, it works. Don't think too hard about it.
+
+    \begin{align}
+        v = \int a\,dt \\
+        v = \int \frac{P}{m+M}\,dt 
+    \end{align}
+    We are already given $P$ to be 1 N, but since this is a hypothetical, we will assume 
+    $m=5 \,\mathrm{kg}$ and $M = 10 \,\mathrm{kg}$:
+    \begin{align}
+        v &= \int \frac{1 \,\mathrm{N}}{5\,\mathrm{kg}+10\,\mathrm{kg}}\,dt \\
+        v &= \int \frac{1 \,\mathrm{N}}{15\,\mathrm{kg}}\,dt \\
+        v &= \int \frac{1 \,\mathrm{kg\cdot m/s^2}}{15\,\mathrm{kg}}\,dt
+        \intertext{\centering Kilograms (kg) cancels out.}
+        v &= \int \frac{1\,\mathrm{m/s^2}}{15}\,dt \\
+        v &= \frac{1}{15}\,\mathrm{m/s^2} \cdot t
+        \intertext{Reminder that this means our acceleration is $\frac{1}{15}\mathrm{m/s^2}$,
+        and if we plug in for $t$, which will be in seconds, the $\mathrm{m/s^2}$ will cancel 
+        into m/s, which are the units of velocity. We will leave out the units in the below 
+        function since it is implied and it looks nicer.}
+        \Rightarrow &\boxed{\mathrm{v}(t) = \frac{1}{15}t}
     \end{align}
 \end{subequations}
 
