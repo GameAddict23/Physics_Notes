@@ -3,6 +3,13 @@
 \usepackage{amsmath, microtype, tikz, physics, gensymb}
 \usepackage[letterpaper, bottom=1in, top=1in, left=1in, right=1in]{geometry}
 
+\patchcmd\subequations
+ {\theparentequation\alph{equation}}
+ {\subequationsformat}
+ {}{}
+
+\newcommand{\subequationsformat}{\theparentequation.\arabic{equation}}
+
 \title{Physics Notes 7}
 \date{2/15/2023}
 \author{Laith}
@@ -45,12 +52,20 @@ moving so that it comes off the ground?
         \draw[blue] (3.5, -5) -- (4.5, -5) -- (4.5, -6) node[midway, xshift=-15] {$m$} -- (3.5, -6) -- (3.5, -5);
     \end{tikzpicture} 
 \end{figure}
-\begin{align}
-    &T-Mg = MA \\
-    &T-mg = ma \\ 
-    &A = -a \\
-    &T - mg = M(-a) \Rightarrow T=Mg-Ma \\
-\end{align}
+\begin{subequations}
+    \begin{align}
+        &T-Mg = MA  &\text{Where $T$ is the force of tension.} \\
+        &T-mg = ma \\ 
+        &A = -a \label{eq:1} \\
+        &T - Mg = M(-a) \Rightarrow T=Mg-Ma \\
+    \end{align}
+\end{subequations}
+In regards to line \ref{eq:1}, we can utilize the fact that 
+the objects are connected, thus both will move with the
+magnitude of acceleration:
+\[ \abs{A} = \abs{a} \] 
+but in opposite directions:
+\[ \boxed{A = -a} \quad \mathrm{or} \quad \boxed{-A = a} \]
 
 \section{Newton's Third Law}
 ``For every force, there is an equal and opposite reaction.''
@@ -66,13 +81,35 @@ With what velocity will the boxes move?
     \centering
     \begin{tikzpicture}
         \draw[-stealth] (-2, 0.5) -- (-0.1, 0.5) node[midway, yshift=10] {$F=1\,\mathrm{N}$};
-        \draw (0, 0) -- (0, 1) -- (1, 1) node[midway, yshift=-15] {$M$} -- (1, 0) -- (0, 0);
+        \draw (0, 0) -- (0, 1) -- (1, 1) node[midway, yshift=-15] {$m$} -- (1, 0) -- (0, 0);
         \draw (1, 0) -- (1, 2) -- (3, 2) node[midway, yshift=-30] {$M$} -- (3, 0) -- (0, 0);
     \end{tikzpicture}
 \end{figure}
-\begin{align}
-    &F + f = mA
-\end{align}
+\begin{subequations}
+    \begin{align}
+        &F + f_{M\rightarrow m} = ma \\
+        &f_{m\rightarrow M} = MA \\
+    \end{align}
+    Let us assume that these are very hard boxes,
+    something like metal.
 
+    Since the small box $m$ is pushing the bigger box $M$, $m$ 
+    cannot move at an acceleration greater than that of $M$ or 
+    else it would have to basically phase through $M$, which is 
+    not physically possible. However, $M$ is not under the same 
+    limitations assuming nothing is in front of it, which is 
+    fairly obvious if you think about it. 
+
+    If the small box $m$ were to hit the big box $M$ with a strong 
+    enough force, $M$ would reach an acceleration higher than 
+    that of $m$, but only for a time. This acceleration would then 
+    return to 0.  
+
+    For purposes, we will assume that
+    \begin{align}
+        &f_{M\rightarrow m} = -f_{m\rightarrow M} &\text{Using Newton's Third Law.} \\
+        &f_{M\rightarrow m} = -f_{m\rightarrow M}
+    \end{align}
+\end{subequations}
 
 \end{document}
