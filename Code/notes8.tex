@@ -59,7 +59,6 @@ However, this only holds true until friction reaches its maximum force:
             xmax=10, xmin=0,
             xlabel = $\va{F}$,
             ylabel = $\va{f}$,
-            % title = $\va{f}$ with respect to $\va{F}$,
             legend pos = outer north east,
         ]
         \plot[no marks, domain={0:3}, color=red] {x};
@@ -156,14 +155,75 @@ us to solve for those componenets of displacement:
 we can then differeniate to get the componenets of velocity:
 \begin{align*}
     v_x &= \derivative{r_x}{t} = -r\sin(\theta) \derivative{\theta}{t} \\[1ex]
-    v_y &= \derivative{r_y}{t} = r\cos(\theta) \derivative{\theta}{t} \\
+    v_y &= \derivative{r_y}{t} = r\cos(\theta) \derivative{\theta}{t}
 \end{align*}
 if you can visualize it, as the object moves around the circle, the displacement vector
 $\va{r}$ follows it, and so componenets of the displacement vector change. Thus, a new 
 triangle is formed, which means a new value for $\theta$, thus $\theta$ does have a rate 
-of change, which comes out during differentiation as seen above.
+of change, which we can call \textbf{angular velocity} and comes out during differentiation 
+as seen above.
 
 The rate of change of $\theta$ will be represented as omega $\omega$:
 \[ \omega = \derivative{\theta}{t} \]
+we will assume that $\omega$ is a constant, meaning the 
+rate of change of the angle does not change over time,
+thus we can rewrite the componenets as:
+\begin{align*}
+    v_x &= -r \, \omega \sin(\theta) \\[1ex]
+    v_y &= r \, \omega \cos(\theta)
+\end{align*}
 
+\subsection{Finding the Components of Acceleration}
+We can differeniate the components velocity to get acceleration:
+\begin{align*}
+    a_x &= \derivative{v_x}{t} = -r \, \omega \cos(\theta) \derivative{\theta}{t} \\
+    a_y &= \derivative{v_x}{t} = -r \, \omega \sin(\theta) \derivative{\theta}{t}
+\end{align*}
+we can simplify this to:
+\begin{align*}
+    a_x &= -r \, \omega^2 \cos(\theta) \\
+    a_y &= -r \, \omega^2 \sin(\theta)
+\end{align*}
+
+\subsection{Relationship Between Displacement, Velocity, and Acceleration}
+Since:
+\[ r_x = r\cos(\theta) \qquad r_y = r\sin(\theta) \tag{1}\label{sub} \]
+then,
+\begin{align*}
+    a_x = -\omega^2 \cdot r\cos(\theta) \implies \boxed{ a_x = -\omega^2r_x }\\
+    a_y = -\omega^2 \cdot r\sin(\theta) \implies \boxed{ a_y = -\omega^2r_y }
+\end{align*}
+We can also relate the vectors as a whole with these relations:
+\begin{align*}
+    \va{a} &= \sqrt{{a_x}^2+{a_y}^2} \\
+           &= \sqrt{{-\omega^2r_x}^2 + {-\omega^2r_y}^2} \\
+           &= \sqrt{(-\omega^2)^2(r_x)^2 + (-\omega^2)^2(r_y)^2} \\
+           &= \sqrt{(-\omega^2)^2\left[(r_x)^2 + (r_y)^2\right]} \\
+           &= \sqrt{(-\omega^2)^2}\sqrt{\left[(r_x)^2 + (r_y)^2\right]} \\
+           &= (-\omega^2)\sqrt{(r_x)^2 + (r_y)^2} \\
+           \intertext{We know that:
+           \[ \abs{\va{r}} = \sqrt{{r_x}^2+{r_y}^2} \]
+           thus:}
+    \va{a} &= -\omega^2\va{r}
+\end{align*}
+\[ \boxed{ \va{a} = -\omega^2\va{r} } \]
+We can also use the same substitutions \ref{sub} with velocity:
+\begin{align*}
+    v_x &= -\omega \cdot r\sin(\theta) \implies v_x = -\omega r_y \\
+    v_y &= \omega \cdot r\cos(\theta) \implies v_x = \omega r_x
+\end{align*}
+Which also means:
+\begin{align*}
+    \va{v} &= \sqrt{{v_x}^2+{v_y}^2} \\
+           &= \sqrt{(-\omega r_y)^2 + (\omega r_x)^2} \\
+           &= \sqrt{(-\omega)^2 (r_y)^2 + (\omega)^2 (r_x)^2} \\
+           &= \sqrt{\omega (r_y)^2 + \omega (r_x)^2} \\
+           &= \sqrt{\omega^2 (r_y)^2 + \omega^2 (r_x)^2} \\
+           &= \sqrt{\omega^2}\sqrt{(r_y)^2 + (r_x)^2} \\
+           &= \omega\sqrt{(r_x)^2 + (r_y)^2} \\
+           &= \omega\va{r} 
+\end{align*}
+\[ \boxed{ \va{v} = \omega\va{r} } \]
+
+    
 \end{document}
