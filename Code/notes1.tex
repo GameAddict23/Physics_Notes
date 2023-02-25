@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 \documentclass{article}
 
 \usepackage{microtype}
@@ -128,7 +127,7 @@
 	\begin{subequations}
 	\begin{align}
 		a &= \diff{dv}\\
-		\int_{t_2}^{t_1}a\,dt &= \int_{t_2}^{t_1}\diff{dv}\\
+		\int_{t_1}^{t_2}a\,dt &= \int_{t_1}^{t_2}\diff{dv}\\
 		a\cdot t\biggr\rvert_{t_1}^{t_2} &= \mathrm{v}(t) \biggr\rvert_{t_1}^{t_2}\\
 		&\Rightarrow \mathrm{v}(t_2)-\mathrm{v}(t_1) = a\cdot(t_2 - t_1)\\
 		&\Rightarrow \mathrm{v}(t_2) = a\cdot (t_2-t_1) + \mathrm{v}(t_1)
@@ -175,24 +174,6 @@
 	\begin{figure}[hh]
 	\begin{center}
 	\begin{tikzpicture}
-<<<<<<< HEAD
-		\node[above] at (-1, 5) {\underline{Before chase started:}};
-		\draw[] (-1, 4) -- (5, 4);
-
-		\node[above, scale=1, color=blue] at (0, 4) (p) {$P_1C_1$};
-		\node[above, scale=1, color=red] at (2, 4) (c) {$C_2$};
-
-		\node[scale=3, color=blue] at (0, 4) (p1) {.};
-		\node[scale=3, color=red] at (2, 4) (p2) {.};
-		
-		\node[below, scale=0.8] at (0, 4) (p) {$t=0\,\mathrm{s}$};
-		\node[below, scale=0.8] at (2, 4) (c) {$t=10\,\mathrm{s}$};
-		\node[below, scale=0.8] at (2, 4-0.4) (x) {$x_{car}=?\,\mathrm{m}$};
-		\node[below, scale=0.8] at (0, 4-0.4) (x) {$x_{police}=0\,\mathrm{m}$};
-		\node[below, scale=0.8] at (0, 4-0.8) (x) {$x_{police}=x_{car}\,\mathrm{m}$};
-
-		\node[above] at (-1, 1) {\underline{After chase started:}};
-=======
 		\node at (-1, 4) {\text{Before the chase:}};
 		\draw[] (-1, 3) -- (5, 3);
 
@@ -209,79 +190,26 @@
 		\node[below, scale=0.8] at (0, 3-0.8) (x) {$x_{police}=x_{car}$};
 
 		\node at (-1, 1) {\text{After the chase:}};
->>>>>>> 5f7ec571d8ab143d7344b6729df45392af8d3ea0
 		\draw[] (-1, 0) -- (5, 0);
 
 		\node[above, scale=1, color=blue] at (0, 0) (p) {$P_1$};
 		\node[above, scale=1, color=red] at (2, 0) (c) {$C_1$};
-<<<<<<< HEAD
-		\node[above, scale=1, color=ForestGreen] at (4, 0) (x) {$C_2\,P_2$};
-=======
 		\node[above, scale=1, color=ForestGreen] at (4, 0) (x) {$C_2P_2$};
->>>>>>> 5f7ec571d8ab143d7344b6729df45392af8d3ea0
 
 		\node[scale=3, color=blue] at (0, 0) (p1) {.};
 		\node[scale=3, color=red] at (2, 0) (p2) {.};
 		\node[scale=3, color=ForestGreen] at (4, 0) (p3) {.};
 		
 		\node[below, scale=0.8] at (0, 0) (p) {$t=10\,\mathrm{s}$};
-<<<<<<< HEAD
-		\node[below, scale=0.8] at (2, 0) (c) {$t=10\,\mathrm{s}$};
-		\node[below, scale=0.8] at (2, -0.4) (x) {$x_{car}=?\,\mathrm{m}$};
-		\node[below, scale=0.8] at (0, -0.4) (x) {$x_{police}=0\,\mathrm{m}$};
-=======
 		\node[below, scale=0.8] at (0, -0.4) (x) {$x_{police}=0\,\mathrm{m}$};
 		\node[below, scale=0.8] at (2, 0) (c) {$t=10\,\mathrm{s}$};
 		\node[below, scale=0.8] at (2, -0.4) (x) {$x_{car}=?\,\mathrm{m}$};
->>>>>>> 5f7ec571d8ab143d7344b6729df45392af8d3ea0
 		\node[below, scale=0.8] at (4, 0) (x) {$t=30\,\mathrm{s}$};
 		\node[below, scale=0.8] at (4, -0.4) (x) {$x_{car}=x_{police}$};
 	\end{tikzpicture}
 	\end{center}
     \end{figure}
 
-<<<<<<< HEAD
-	Lets list our known and unknown variables:
-	\begin{align*}
-		&\mathrm{\underline{Knowns}}\\
-		&t_1 =0\,\mathrm{s} \\
-		&t_2 = 30\,\mathrm{s} \\
-		&{v_1}_{police} =0\,\mathrm{m/s} \\
-		&a_{police} =10\,\mathrm{m/s^2}\\
-		&\x_{police}(0) = \x_{police}(10) = 0\,\mathrm{m}\\
-		&a_{car} =0\,\mathrm{m/s^2}\\
-		&\mathrm{\underline{Unknowns}}\\
-		&{x_1}_{car} = ?\\
-		&x_2 = ?\\
-		&{v_2}_{police} = ?\\
-		&{v}_{car} = ?
-	\end{align*}
-
-	\paragraph{Setting up the Math} We will make the position of the police car at time $t=0$ our
-	reference position. Since the position of the speeding car is equal to that of the police car at 
-	time $t=0$, we can say that $\x_{car}(0)=0$. We can also set $t_1=0$ and $t_2=30$, in which both cars
-	meet at time $t=30$ and start at the same position at time $t=0$. We will be integrating with respect to 
-	time, in which our limits will be $a=t_1$ and $b=t_2$.
-
-	Since the cars meet 30 seconds into the scenario, we can set up the below equation:
-	\[\x_{car}(30) = \x_{police}(30)\]
-	Naturally, we will need to find an expression for each function, and we can do so by integrating accelerations.
-
-	We can determine the acceleration of the speeding car in two ways:
-	\begin{enumerate}[label=(\alph*)]
-		\item Differentiating velocity.
-		\item Making a logical deduction.
-	\end{enumerate}
-
-	With approach \textbf{a}, we know that the differentiating velocity will give us the acceleration of the speeding car,
-	and we also know that the velocity of the speeding car is constant.
-	By differentiating a constant, we will get $0$:
-	\[a = \ddx v_{car} = \ddx C = 0\]
-	Thus, our acceleration $a$ is $0\,\mathrm{m/s^2}$
-
-
-	\begin{subequations}	
-=======
 	We can even take a closer look by roughly graphing the positions of the car with 
 	respect to time:
 	\begin{center}
@@ -369,7 +297,6 @@
 		\Rightarrow v_{car} &= \frac{2000}{30} \\
 		&\boxed{v_{car} = \frac{200}{3} \,\mathrm{m/s}}
 	\end{align}	
->>>>>>> 5f7ec571d8ab143d7344b6729df45392af8d3ea0
 	\end{subequations}
 	Thus, the velocity of the speeding car was $\frac{200}{3}\,\mathrm{m/s}$.
 \end{document}
@@ -502,7 +429,7 @@
 	\begin{subequations}
 	\begin{align}
 		a &= \diff{dv}\\
-		\int_{t_2}^{t_1}a\,dt &= \int_{t_2}^{t_1}\diff{dv}\\
+		\int_{t_1}^{t_2}a\,dt &= \int_{t_1}^{t_2}\diff{dv}\\
 		a\cdot t\biggr\rvert_{t_1}^{t_2} &= \mathrm{v}(t) \biggr\rvert_{t_1}^{t_2}\\
 		&\Rightarrow \mathrm{v}(t_2)-\mathrm{v}(t_1) = a\cdot(t_2 - t_1)\\
 		&\Rightarrow \mathrm{v}(t_2) = a\cdot (t_2-t_1) + \mathrm{v}(t_1)
@@ -675,4 +602,4 @@
 	\end{subequations}
 	Thus, the velocity of the speeding car was $\frac{200}{3}\,\mathrm{m/s}$.
 \end{document}
->>>>>>> d277412f89eca5cb34333aae26b914d8e28252a6
+
