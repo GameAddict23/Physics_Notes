@@ -11,6 +11,8 @@
 ,   color
 ,   etoolbox
 ,   fancyhdr
+,   cancel
+,   nicefrac
 }
 \usepackage[letterpaper, top=1in, bottom=1in, left=1in, right=1in]{geometry}
 
@@ -144,8 +146,6 @@
 
     % \end{subequations}
 
-    \newpage
-
     \subsection{Problem 31: Page 58}
     In Fig. 3-30, a vector $\va{a}$ with a magnitude 
     of $17.0\,\mathrm{m}$ is directed at angle $\theta=56.0\degree$
@@ -240,6 +240,45 @@
     \begin{subequations}
     
     \subsubsection{Solution}
+    The first thing we should do is draw the scenario:
+
+    We know that the man runs at constant speed since he is always running 
+    \emph{as fast as he can}. The moving sidewalk is not said to change speed 
+    nor would it make sense for it to change speed, think of it like a flat 
+    escalator. Thus, the acceleration in this scenario is 0, meaning it will
+    not have an effect and we can write our equations without it.
+
+
+    We can write a system of equations, one for when the man is running 
+    along the sidewalk and the other where he is running against the sidewalk:
+
+    We can say that the speed of the man relative to the sidewalk is his speed 
+    plus the sidewalk speed in scenario 1 and his speed minus the sidewalk speed 
+    in scenario 2. Since the man is able to run against the sidewalk, his speed 
+    must be greater than the sidewalk, thus we subtract the speed of the sidewalk 
+    from his speed to determine his speed relative to the sidewalk:
+    \begin{gather}
+        \frac{\Delta x}{2.5} = \mathrm{man}_v+\mathrm{sidewalk}_v \tag1 \\ 
+        \frac{\Delta x}{10} = \mathrm{man}_v-\mathrm{sidewalk}_v \tag2 
+    \end{gather}
+    We can solve for $\mathrm{man}_v$ in equation 1, then substitute that into 
+    equation 2 to solve for $\mathrm{sidewalk}_v$, then divide $\mathrm{man}_v$ 
+    by $\mathrm{sidewalk}_v$ to determine the ratio:
+    \begin{gather}
+        \text{Equation 1 implies that:}\quad \mathrm{sidewalk}_v = \frac{1}{2.5}\Delta x - \mathrm{man}_v \\
+        \text{Equation 2 implies that:}\quad \mathrm{man}_v = \frac{1}{10}\Delta x + \mathrm{sidewalk}_v \\
+        \intertext{Solving for $\mathrm{man_v}$:}
+        \frac{1}{2.5} = \frac{2}{5} \nonumber \\
+        \mathrm{man}_v = \frac{1}{10}\Delta x + \left(\frac{2}{5}\Delta x - \mathrm{man}_v\right) \\
+        \mathrm{man}_v = \frac{1}{10}\Delta x + \frac{4}{10}\Delta x - \mathrm{man}_v \\
+        2\,\mathrm{man}_v = \left(\frac{1}{10} + \frac{4}{10}\right)\Delta x \\
+        \mathrm{man}_v = = \frac{\left(\dfrac{5}{10}\right)}{2}\Delta x = \frac{5}{20}\Delta x = \frac{1}{4}\Delta x \\
+        \intertext{Solving for $\mathrm{sidewalk_v}$:}
+        \mathrm{sidewalk}_v = \frac{2}{5}\Delta x - \frac{1}{4}\Delta x = \left(\frac{8}{20} - \frac{5}{20}\right)\Delta x \\
+        \mathrm{sidewalk}_v = \frac{3}{20}\Delta x
+        \intertext{Calculating ratio:} 
+        \frac{\mathrm{man_v}}{\mathrm{sidewalk}_v} = \frac{\dfrac{5}{20}\cancel{\Delta x}}{\dfrac{3}{20}\cancel{\Delta x}} = \frac{20}{3}\cdot\frac{5}{20} = \boxed{\frac{5}{3}}
+    \end{gather}
     \end{subequations}
 
 \newpage
@@ -305,6 +344,27 @@
     \begin{subequations}
     
     \subsubsection{Solution}
+    First we should draw a force diagram:
+
+    We can use the $37\degree$ angle, which we will call $\theta$ to form a right triangle 
+    and solve for the $x$ component of tension, since the push force is the only other 
+    horizontal force acting on the sphere.
+
+    Since the sphere is suspended, it means it is not moving, thus acceleration is 0.
+    Since $F=ma$, we now know that the net force on the object is 0 Newtons.
+    \begin{gather}
+        x:\quad P - T_x = 0 \implies P = T_x \\
+        \sin(\theta) = \frac{T_x}{\va{T}} \implies T_x = \va{T}\sin(\theta) 
+        P = \va{T}\sin(\theta)
+        \intertext{We need to solve for the tension $\va{T}$ in order to solve for P, 
+        we can do so by taking all of the vertical forces acting on the sphere, which 
+        are $T_y$ and $mg$:}
+        y:\quad T_y - mg = 0 \implies T_y = mg \\
+        \cos(\theta) = \frac{T_y}{\va{T}} \implies \va{T} = \frac{mg}{\cos(\theta)}
+        \intertext{Thus we have our answers:}
+        \boxed{P = mg\tan(\theta)} \tag a \\
+        \boxed{T = mg\sec(\theta)} \tag b
+    \end{gather}
     \end{subequations}
 
     \newpage
@@ -318,12 +378,40 @@
         \includegraphics[width=10cm]{Exam1Practice_Figures/force2.png}
         \caption{5-41}
     \end{figure}
-    as a function of time $t$, the component $v_x$ of the box's velocity 
+
+    \noindent as a function of time $t$, the component $v_x$ of the box's velocity 
     along an $x$ axis that extends directly up the ramp. What is the magnitude 
     of the normal force on the box from the ramp?
     \begin{subequations}
     
     \subsubsection{Solution}
+    We can draw a free-body diagram of the box sliding up the ramp:
+
+    The first thing to do is find acceleration, since we know that there is 
+    horizontal acceleration according to the graph of $v_x$. Taking the slope 
+    of the graph using points $t=0$ to $t=2$, we find the slope to be:
+    \[ a_x = \mathrm{slope}_{v_x} = \frac{-1-4}{2-0} = \frac{-5}{2} \]
+    since the object is not moving vertically, we know that $a_y=0$. We can 
+    determine $\theta$.
+
+    Since the box only experiences the force of gravity and the ramp on the incline, the equation:
+    \[ a = -g\sin(\theta) \]
+    holds true. We can use this to solve for $\theta$:
+    \begin{gather}
+        \frac{-5}{2} - -g\sin(\theta) \\
+        \frac{5}{2g} = \sin(\theta) \\
+        \theta = \arcsin(\frac{5}{2g})
+    \end{gather}
+
+    Since the box does not move vertically, the sum of forces on 
+    the $y$-axis is 0. Now we can solve for the normal force:
+    \begin{gather}
+        y: \quad N - mg_y = 0 \implies N = mg_y \\
+        \sin(90-\theta) = \frac{mg_y}{mg} \implies mg_y = mg\sin(90-\theta) \\
+        N = mg\sin(90-\theta)
+    \end{gather}
+        Thus our answer is:
+    \[ \boxed{ N = mg\sin(90-\arcsin(\frac{5}{2g})) } \]
     \end{subequations}
 
 \end{document}
