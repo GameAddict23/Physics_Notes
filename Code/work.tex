@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage[letterpaper, top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{
+    physics, 
+    amsmath, 
+    enumitem, 
+    nicefrac, 
+    fancyhdr, 
+    microtype, 
+    pgfplots, 
+    tikz, 
+    float,
+    hyperref
+}
+
+\pgfplotsset{compat=newest}
+\pagestyle{fancy}
+
+\title{Work and Spring Force}
+\author{Laith Toom}
+\date{21/2/2023}
+
+\begin{document}
+\maketitle
+\tableofcontents 
+
+\newpage 
+
+\section{What is Work?}
+Work, $W$, is the change in kinetic energy:
+\[ W = \frac{1}{2}M\abs{\va{v_f}}^2 - \frac{1}{2}M\abs{\va{v_i}}^2 = \boxed{ \frac{M}{2} \left(\abs{\va{v_f}}^2 - \abs{\va{v_i}}^2 \right) } \]
+Work is also equal to the dot product between a force vector and displacement vector:
+\[ W = \abs{\va{F}}\cdot\abs{\va{r}}\cdot\cos(\theta) \]
+
+In the case of complex trajectory, such as:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[->] (0, 0) -- (0, 10);
+        \draw[->] (0, 0) -- (10, 0);
+
+        \draw[->, red] (0, 0) -- (3, 4) node[above left, midway] {$\va{r_i}$};
+        \draw[->, red] (0, 0) -- (7, 5) node[above left, midway] {$\va{r_f}$};
+
+        \draw[dotted] (3, 4) .. controls (5, 3) and (6, 8) .. (7, 5);
+
+        \draw[->, blue] (3, 4) -- (3, 0) node[below] {$Mg$};
+    \end{tikzpicture}
+\end{figure}
+then work can be calculated by taking the integral of the trajectory, where 
+the trajectory will be divided into very small vectors $\mathrm{d}\va{r}$:
+{\large
+\begin{align}
+    W &= \int_{\va{r_i}}^{\va{r_f}} \abs{\va{F}} \cdot \mathrm{d}\va{r} \\
+      &= \int_{\va{r_i}}^{\va{r_f}} Mg\,\hat{y} \cdot \mathrm{d}\va{r} \\
+      &= Mg\,\hat{y} \int_{\va{r_i}}^{\va{r_f}} \mathrm{d}\va{r} \\
+      &= Mg\,\hat{y} \left(\va{r_f} - \va{r_i}\right)
+\end{align}
+}
+\newpage
+Subtracting the two vectors $\va{r_f}$ and $\va{r_i}$ will result in a new vector,
+$\overrightarrow{\bf{r_f-r_i}}$:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[->, red] (0, 0) -- (3, 4) node[above left, midway] {$\va{r_i}$};
+        \draw[->, red] (0, 0) -- (7, 5) node[above left, midway] {$\va{r_f}$};
+
+        \draw[->, very thick, black] (3, 4) -- (7, 5) node[above, yshift=5, midway] {$\overrightarrow{\bf{r_f-r_i}}$};
+
+        \draw[->, blue] (3, 4) -- (3, 0) node[below] {$Mg$};
+    \end{tikzpicture}
+\end{figure}
+and if we look closer, we will find a right triangle:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[->, very thick, black] (3, 4) -- (7, 5) node[above, yshift=5, midway] {$\overrightarrow{\bf{r_f-r_i}}$};
+        \draw[dashed] (3, 4) -- (7, 4);
+        \draw[dashed] (7, 4) -- (7, 5);
+
+        \draw (4.5, 4.39) arc(13:-10:1) node[right, midway] {$\alpha$};
+        \draw (5, 4.5) arc(10:-91:2) node[right, midway] {$\theta$};
+
+        \draw (3, 3.5) -- (3.5, 3.5) -- (3.5, 4);
+
+        \draw[->, blue] (3, 4) -- (3, 0) node[below] {$Mg$};
+    \end{tikzpicture}
+\end{figure}
+We see that:
+\[ \alpha = \theta - 90 \Longleftrightarrow \theta = \alpha + 90 \]
+Work is the dot product between the force vector and displacement vector. 
+In our case, the force vector is $Mg$ and the displacement vector is 
+$\overrightarrow{\bf{r_f-r_i}}$, and we see that $\theta$ is the angle 
+between the two vectors, thus:
+\begin{align}
+    W_g = Mg \cdot \abs{\overrightarrow{\bf{r_f-r_i}}} \cdot \cos(\theta) 
+    \intertext{Since $\theta=\alpha+90$, we can rewrite this as:}
+    W_g = Mg \cdot \abs{\overrightarrow{\bf{r_f-r_i}}} \cdot \cos(\alpha+90)  
+    \intertext{and since $\cos(A+90)=-\sin(A)$, we can rewrite this again as:}
+    W_g = Mg \cdot \abs{\overrightarrow{\bf{r_f-r_i}}} \cdot -\sin(\alpha)  
+\end{align}
+Thus, we find the formula:
+\[ \boxed{ W_g = -Mg\abs{\overrightarrow{\bf{r_f-r_i}}}\sin(\alpha) } \]
+
+\end{document}
